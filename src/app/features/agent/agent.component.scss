@@ -1,0 +1,14 @@
+:host /deep/ .container {
+  padding: 10px;
+
+  .ui-table {
+    font-size: 13px;
+
+    // .ui-table-tbody {
+    //   font-size: 1px;
+    // }
+    .ui-table-tbody>tr>td {
+      word-wrap: break-word;
+    }
+  }
+}

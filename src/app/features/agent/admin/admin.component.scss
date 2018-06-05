@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  .control-col {
+    width: 33%;
+  }
+  .form-group {
+    width: 70%;
+    input {
+      width: 100%;
+    }
+    p-checkbox {
+      display: block;
+    }
+  }
+  .btns-holder {
+    padding: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}

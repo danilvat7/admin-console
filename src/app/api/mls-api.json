@@ -1,0 +1,5784 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "API for time tracking service for Web and iPhone based clients",
+		"version": "0.0.2",
+		"title": "ShowingTime",
+		"contact": {
+		},
+		"license": {
+			"name": "Propriatry",
+			"url": "http://something.com"
+		}
+	},
+	"host": "stagingmls.primeshowing.com",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "loggers-mvc-endpoint",
+			"description": "Loggers Mvc Endpoint"
+		},
+		{
+			"name": "agent-api-controller",
+			"description": "Agent Api Controller"
+		},
+		{
+			"name": "endpoint-mvc-adapter",
+			"description": "Endpoint Mvc Adapter"
+		},
+		{
+			"name": "metrics-mvc-endpoint",
+			"description": "Metrics Mvc Endpoint"
+		},
+		{
+			"name": "heapdump-mvc-endpoint",
+			"description": "Heapdump Mvc Endpoint"
+		},
+		{
+			"name": "page-controller",
+			"description": "Page Controller"
+		},
+		{
+			"name": "schedule-controller",
+			"description": "Schedule Controller"
+		},
+		{
+			"name": "basic-error-controller",
+			"description": "Basic Error Controller"
+		},
+		{
+			"name": "listing-controller",
+			"description": "Listing Controller"
+		},
+		{
+			"name": "email-controller",
+			"description": "Email Controller"
+		},
+		{
+			"name": "feedback-api-controller",
+			"description": "Feedback Api Controller"
+		},
+		{
+			"name": "feedback-controller",
+			"description": "Feedback Controller"
+		},
+		{
+			"name": "Showing controller",
+			"description": "Showing Api Controller"
+		},
+		{
+			"name": "listing-api-controller",
+			"description": "Listing Api Controller"
+		},
+		{
+			"name": "client-api-controller",
+			"description": "Client Api Controller"
+		},
+		{
+			"name": "environment-mvc-endpoint",
+			"description": "Environment Mvc Endpoint"
+		},
+		{
+			"name": "audit-events-mvc-endpoint",
+			"description": "Audit Events Mvc Endpoint"
+		},
+		{
+			"name": "sms-controller",
+			"description": "Sms Controller"
+		},
+		{
+			"name": "Schedule controller",
+			"description": "Schedule Api Controller"
+		},
+		{
+			"name": "health-mvc-endpoint",
+			"description": "Health Mvc Endpoint"
+		},
+		{
+			"name": "mlsgateway-api-controller",
+			"description": "Mlsgateway Api Controller"
+		}
+	],
+	"paths": {
+		"/agents": {
+			"get": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "findAgent",
+				"operationId": "findAgentUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/agents/by_email": {
+			"get": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "findAgentByEmail",
+				"operationId": "findAgentByEmailUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "firstName",
+						"in": "query",
+						"description": "firstName",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "lastName",
+						"in": "query",
+						"description": "lastName",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "email",
+						"in": "query",
+						"description": "email",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/agents/by_phone": {
+			"get": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "findAgentByPhone",
+				"operationId": "findAgentByPhoneUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "firstName",
+						"in": "query",
+						"description": "firstName",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "lastName",
+						"in": "query",
+						"description": "lastName",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "phone",
+						"in": "query",
+						"description": "phone",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/agents/id": {
+			"get": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "findAgent",
+				"operationId": "findAgentUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/agents/register": {
+			"post": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "registerAgent",
+				"operationId": "registerAgentUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"in": "body",
+						"name": "agent",
+						"description": "agent",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/AgentProfile"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/agents/update": {
+			"post": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "updateAgent",
+				"operationId": "updateAgentUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"in": "body",
+						"name": "agent",
+						"description": "agent",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/AgentProfile"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/api/feedback": {
+			"get": {
+				"tags": [
+					"feedback-api-controller"
+				],
+				"summary": "findFeedback",
+				"operationId": "findFeedbackUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "feedbackId",
+						"in": "query",
+						"description": "feedbackId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ShowingDetailsModel»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"feedback-api-controller"
+				],
+				"summary": "addFeedback",
+				"operationId": "addFeedbackUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "feedback",
+						"description": "feedback",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Feedback"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«FeedbackModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/auditevents": {
+			"get": {
+				"tags": [
+					"audit-events-mvc-endpoint"
+				],
+				"summary": "findByPrincipalAndAfterAndType",
+				"operationId": "findByPrincipalAndAfterAndTypeUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "principal",
+						"in": "query",
+						"description": "principal",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "after",
+						"in": "query",
+						"description": "after",
+						"required": false,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"description": "type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/auditevents.json": {
+			"get": {
+				"tags": [
+					"audit-events-mvc-endpoint"
+				],
+				"summary": "findByPrincipalAndAfterAndType",
+				"operationId": "findByPrincipalAndAfterAndTypeUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "principal",
+						"in": "query",
+						"description": "principal",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "after",
+						"in": "query",
+						"description": "after",
+						"required": false,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"description": "type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/autoconfig": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/autoconfig.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/beans": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_2",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/beans.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_3",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/bulkSchedule": {
+			"get": {
+				"tags": [
+					"schedule-controller"
+				],
+				"summary": "bulkScheduleIndex",
+				"operationId": "bulkScheduleIndexUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "clientAdditionalId",
+						"in": "query",
+						"description": "clientAdditionalId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": false,
+						"type": "object"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"schedule-controller"
+				],
+				"summary": "submitBulkSchedule",
+				"operationId": "submitBulkScheduleUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "schedule",
+						"description": "schedule",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ScheduleModel"
+						}
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": false,
+						"type": "object"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/clients": {
+			"get": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "getAllClients",
+				"operationId": "getAllClientsUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"description": "type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«Client»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "addClient",
+				"operationId": "addClientUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "request",
+						"description": "request",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Client"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Client»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "clientId",
+						"in": "query",
+						"description": "clientId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				}
+			}
+		},
+		"/clients/update": {
+			"post": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "update",
+				"operationId": "updateUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Client»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/configprops": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_4",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/configprops.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_5",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/deleteClient/{clientId}": {
+			"get": {
+				"tags": [
+					"schedule-controller"
+				],
+				"summary": "deleteClient",
+				"operationId": "deleteClientUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "clientId",
+						"in": "path",
+						"description": "clientId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/dump": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_6",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/dump.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_7",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/email/showings": {
+			"get": {
+				"tags": [
+					"email-controller"
+				],
+				"summary": "findShowingByHash",
+				"operationId": "findShowingByHashUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "receiverHash",
+						"in": "query",
+						"description": "receiverHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/email/showings/approve": {
+			"get": {
+				"tags": [
+					"email-controller"
+				],
+				"summary": "approveShowing",
+				"operationId": "approveShowingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "receiverHash",
+						"in": "query",
+						"description": "receiverHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/email/showings/reject": {
+			"get": {
+				"tags": [
+					"email-controller"
+				],
+				"summary": "rejectShowing",
+				"operationId": "rejectShowingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "receiverHash",
+						"in": "query",
+						"description": "receiverHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/env": {
+			"get": {
+				"tags": [
+					"environment-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_14",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/env.json": {
+			"get": {
+				"tags": [
+					"environment-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_15",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/env/{name}": {
+			"get": {
+				"tags": [
+					"environment-mvc-endpoint"
+				],
+				"summary": "value",
+				"operationId": "valueUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"description": "name",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/error": {
+			"get": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"head": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingHEAD",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPUT",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingDELETE",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				}
+			},
+			"options": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingOPTIONS",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				}
+			},
+			"patch": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPATCH",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				}
+			}
+		},
+		"/feedback": {
+			"post": {
+				"tags": [
+					"feedback-controller"
+				],
+				"summary": "addFeedback",
+				"operationId": "addFeedbackUsingPOST_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "initiator",
+						"in": "query",
+						"description": "initiator",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "feedback",
+						"description": "feedback",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Feedback"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«FeedbackModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/health": {
+			"get": {
+				"tags": [
+					"health-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_16",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/health.json": {
+			"get": {
+				"tags": [
+					"health-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_17",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/heapdump": {
+			"get": {
+				"tags": [
+					"heapdump-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_18",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/octet-stream"
+				],
+				"parameters": [
+					{
+						"name": "live",
+						"in": "query",
+						"description": "live",
+						"required": false,
+						"type": "boolean",
+						"default": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/heapdump.json": {
+			"get": {
+				"tags": [
+					"heapdump-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_19",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/octet-stream"
+				],
+				"parameters": [
+					{
+						"name": "live",
+						"in": "query",
+						"description": "live",
+						"required": false,
+						"type": "boolean",
+						"default": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/info": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_8",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/info.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_9",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/invitations/resend": {
+			"get": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "resendInvitation",
+				"operationId": "resendInvitationUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«boolean»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/listing/setup": {
+			"post": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "setupListing",
+				"operationId": "setupListingUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "setupModel",
+						"description": "setupModel",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ShowingSetupModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ListingDetailsModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/listings": {
+			"get": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "findListings",
+				"operationId": "findListingsUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "offset",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ListingModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/listings/map": {
+			"post": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "findListingsMap",
+				"operationId": "findListingsMapUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "request",
+						"description": "request",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ListingMapRequest"
+						}
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ListingModel»»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/listings/seller": {
+			"get": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "findListingsBySeller",
+				"operationId": "findListingsBySellerUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "sellerId",
+						"in": "query",
+						"description": "sellerId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«SimpleListingModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/listings/without_seller": {
+			"get": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "findListingsWithoutSeller",
+				"operationId": "findListingsWithoutSellerUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "offset",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«SimpleListingModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/loggers": {
+			"get": {
+				"tags": [
+					"loggers-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_20",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/loggers.json": {
+			"get": {
+				"tags": [
+					"loggers-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_21",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/loggers/{name}": {
+			"get": {
+				"tags": [
+					"loggers-mvc-endpoint"
+				],
+				"summary": "get",
+				"operationId": "getUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"description": "name",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"loggers-mvc-endpoint"
+				],
+				"summary": "set",
+				"operationId": "setUsingPOST",
+				"consumes": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"description": "name",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "configuration",
+						"description": "configuration",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/mappings": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_10",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/mappings.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_11",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/metrics": {
+			"get": {
+				"tags": [
+					"metrics-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_22",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/metrics.json": {
+			"get": {
+				"tags": [
+					"metrics-mvc-endpoint"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_23",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/metrics/{name}": {
+			"get": {
+				"tags": [
+					"metrics-mvc-endpoint"
+				],
+				"summary": "value",
+				"operationId": "valueUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"description": "name",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/mlsgateway/agents": {
+			"get": {
+				"tags": [
+					"mlsgateway-api-controller"
+				],
+				"summary": "findAgent",
+				"operationId": "findAgentUsingGET_2",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentProfile»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/mlsgateway/listings": {
+			"get": {
+				"tags": [
+					"mlsgateway-api-controller"
+				],
+				"summary": "findListing",
+				"operationId": "findListingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ListingModel»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/mylistings/seller": {
+			"get": {
+				"tags": [
+					"listing-api-controller"
+				],
+				"summary": "findMyListingsBySeller",
+				"operationId": "findMyListingsBySellerUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ListingModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/page/showings/approve": {
+			"get": {
+				"tags": [
+					"page-controller"
+				],
+				"summary": "approveShowing",
+				"operationId": "approveShowingUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "initiatorHash",
+						"in": "query",
+						"description": "initiatorHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/page/showings/cancel": {
+			"get": {
+				"tags": [
+					"page-controller"
+				],
+				"summary": "cancelShowing",
+				"operationId": "cancelShowingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "initiatorHash",
+						"in": "query",
+						"description": "initiatorHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/page/showings/reject": {
+			"get": {
+				"tags": [
+					"page-controller"
+				],
+				"summary": "rejectShowing",
+				"operationId": "rejectShowingUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingHash",
+						"in": "query",
+						"description": "showingHash",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "initiatorHash",
+						"in": "query",
+						"description": "initiatorHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/ping": {
+			"get": {
+				"tags": [
+					"feedback-controller"
+				],
+				"summary": "ping",
+				"operationId": "pingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/schedule": {
+			"get": {
+				"tags": [
+					"schedule-controller"
+				],
+				"summary": "scheduleIndex",
+				"operationId": "scheduleIndexUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "clientAdditionalId",
+						"in": "query",
+						"description": "clientAdditionalId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": false,
+						"type": "object"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"schedule-controller"
+				],
+				"summary": "submitSchedule",
+				"operationId": "submitScheduleUsingPOST_2",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "schedule",
+						"description": "schedule",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ScheduleModel"
+						}
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": false,
+						"type": "object"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/schedule/dates": {
+			"get": {
+				"tags": [
+					"Schedule controller"
+				],
+				"summary": "findScheduledDates",
+				"operationId": "findScheduledDatesUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ScheduledDatesWrapper»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/schedule/single": {
+			"post": {
+				"tags": [
+					"Schedule controller"
+				],
+				"summary": "submitSchedule",
+				"operationId": "submitScheduleUsingPOST_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "schedule",
+						"description": "schedule",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ScheduleModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ScheduledShowingModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sellers": {
+			"get": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "findSeller",
+				"operationId": "findSellerUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Client»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sellers/markHasAccount": {
+			"get": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "markSellerHasAccount",
+				"operationId": "markSellerHasAccountUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sellers/stats": {
+			"get": {
+				"tags": [
+					"agent-api-controller"
+				],
+				"summary": "findAgentStatistic",
+				"operationId": "findAgentStatisticUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«AgentStatisticModel»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sellers/update": {
+			"post": {
+				"tags": [
+					"client-api-controller"
+				],
+				"summary": "update",
+				"operationId": "updateUsingPOST_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"in": "body",
+						"name": "data",
+						"description": "data",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Client"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Client»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showing/setup": {
+			"get": {
+				"tags": [
+					"listing-controller"
+				],
+				"summary": "retrieveSetupContent",
+				"operationId": "retrieveSetupContentUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "clientAdditionalId",
+						"in": "query",
+						"description": "clientAdditionalId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": false,
+						"type": "object"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"listing-controller"
+				],
+				"summary": "submitSchedule",
+				"operationId": "submitScheduleUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "setupModel",
+						"description": "setupModel",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ShowingSetupModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowignDetails",
+				"operationId": "getShowignDetailsUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingId",
+						"in": "query",
+						"description": "showingId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "markFeedbackRead",
+						"in": "query",
+						"description": "markFeedbackRead",
+						"required": false,
+						"type": "boolean",
+						"default": false
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ShowingDetailsModel»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/agent": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsByAgent",
+				"operationId": "getShowingsByAgentUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Map«string,List«AgentShowingItemModel»»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/approve": {
+			"post": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "approveShowing",
+				"operationId": "approveShowingUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingId",
+						"in": "query",
+						"description": "showingId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ShowingDetailsModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/cancel": {
+			"post": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "cancelShowing",
+				"operationId": "cancelShowingUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingId",
+						"in": "query",
+						"description": "showingId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "initiatorHash",
+						"in": "query",
+						"description": "initiatorHash",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ShowingDetailsModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/listing": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsByListing",
+				"operationId": "getShowingsByListingUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsListingId",
+						"in": "query",
+						"description": "mlsListingId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Map«string,List«ListingShowingItemModel»»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/non_confirmed": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getNonConfirmedShowings",
+				"operationId": "getNonConfirmedShowingsUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«NonConfirmedShowingItemModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/non_confirmed/seller": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getNonConfirmedShowings",
+				"operationId": "getNonConfirmedShowingsUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«NonConfirmedShowingItemModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/reject": {
+			"post": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "rejectShowing",
+				"operationId": "rejectShowingUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "showingId",
+						"in": "query",
+						"description": "showingId",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«ShowingDetailsModel»"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/seller": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsBySeller",
+				"operationId": "getShowingsBySellerUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«Map«string,List«AgentShowingItemModel»»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/with_feedback": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsWithUnreadFeedback",
+				"operationId": "getShowingsWithUnreadFeedbackUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ShowingDetailsModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/with_feedback/seller": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsWithUnreadFeedback",
+				"operationId": "getShowingsWithUnreadFeedbackUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ShowingDetailsModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/without_feedback": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsWithoutFeedback",
+				"operationId": "getShowingsWithoutFeedbackUsingGET_1",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "mlsId",
+						"in": "query",
+						"description": "mlsId",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "mlsAgentId",
+						"in": "query",
+						"description": "mlsAgentId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ShowingDetailsModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/showings/without_feedback/seller": {
+			"get": {
+				"tags": [
+					"Showing controller"
+				],
+				"summary": "getShowingsWithoutFeedback",
+				"operationId": "getShowingsWithoutFeedbackUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"description": "id",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponseModel«List«ShowingDetailsModel»»"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sms": {
+			"post": {
+				"tags": [
+					"sms-controller"
+				],
+				"summary": "processShowingConfirmationResponse",
+				"operationId": "processShowingConfirmationResponseUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/sms/twilio": {
+			"get": {
+				"tags": [
+					"sms-controller"
+				],
+				"summary": "downloadTwilioPhones",
+				"operationId": "downloadTwilioPhonesUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AvailablePhonesModel"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/trace": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_12",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/trace.json": {
+			"get": {
+				"tags": [
+					"endpoint-mvc-adapter"
+				],
+				"summary": "invoke",
+				"operationId": "invokeUsingGET_13",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/vnd.spring-boot.actuator.v1+json",
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"AgentStatisticModel": {
+			"type": "object",
+			"properties": {
+				"feedbackNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"feedbackToProvideNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"listingNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"pendingShowingNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"showingNum": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"ApiResponseModel«ListingDetailsModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/ListingDetailsModel"
+				}
+			}
+		},
+		"ApiResponseModel«boolean»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "boolean"
+				}
+			}
+		},
+		"NonConfirmedShowingItemModel": {
+			"type": "object",
+			"properties": {
+				"buyer": {
+					"$ref": "#/definitions/UserModel«IUser»"
+				},
+				"buyersAgent": {
+					"$ref": "#/definitions/AgentModel"
+				},
+				"date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"listing": {
+					"$ref": "#/definitions/ListingPlanModel"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"ShowingDetailsModel": {
+			"type": "object",
+			"properties": {
+				"buyer": {
+					"$ref": "#/definitions/UserModel«IUser»"
+				},
+				"buyersAgent": {
+					"$ref": "#/definitions/AgentModel"
+				},
+				"date": {
+					"type": "string"
+				},
+				"feedback": {
+					"$ref": "#/definitions/FeedbackModel"
+				},
+				"history": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ShowingEventModel"
+					}
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"listing": {
+					"$ref": "#/definitions/ListingDetailsModel"
+				},
+				"seller": {
+					"$ref": "#/definitions/UserModel«IUser»"
+				},
+				"sellersAgent": {
+					"$ref": "#/definitions/AgentModel"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				},
+				"timestamp": {
+					"type": "string"
+				}
+			}
+		},
+		"ApiResponseModel«AgentProfile»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/AgentProfile"
+				}
+			}
+		},
+		"ShowingEventModel": {
+			"type": "object",
+			"properties": {
+				"date": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"AgentModel": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"mlsAgentId": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"notificationType": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"PHONE",
+							"EMAIL",
+							"PUSH",
+							"NA"
+						]
+					}
+				},
+				"officeName": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				}
+			}
+		},
+		"ScheduleModel": {
+			"type": "object",
+			"properties": {
+				"agent": {
+					"$ref": "#/definitions/AgentProfileSnapshot"
+				},
+				"client": {
+					"$ref": "#/definitions/Client"
+				},
+				"clientId": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"showings": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ScheduleShowingModel"
+					}
+				}
+			}
+		},
+		"ApiResponseModel«List«NonConfirmedShowingItemModel»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NonConfirmedShowingItemModel"
+					}
+				}
+			}
+		},
+		"ListingDetailsModel": {
+			"type": "object",
+			"properties": {
+				"baths": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"bedrooms": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"city": {
+					"type": "string"
+				},
+				"confirmationStrategy": {
+					"type": "string",
+					"enum": [
+						"AUTO",
+						"BY_SELLER_AGENT",
+						"BY_SELLER"
+					]
+				},
+				"coordinates": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"feedbacksNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"imageUrl": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"requires24hNotice": {
+					"type": "boolean"
+				},
+				"showingInstructions": {
+					"type": "string"
+				},
+				"showingNum": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"squareFootage": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"ACTIVE",
+						"CLOSED",
+						"PENDING"
+					]
+				},
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"APPARTMENTS",
+						"HOUSES",
+						"CONDOS",
+						"TOWNHOMES",
+						"MULTI_FAMILY"
+					]
+				},
+				"unitNumber": {
+					"type": "string"
+				},
+				"zipCode": {
+					"type": "string"
+				}
+			}
+		},
+		"ApiResponseModel«ScheduledDatesWrapper»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/ScheduledDatesWrapper"
+				}
+			}
+		},
+		"IUser": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"notificationType": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"PHONE",
+							"EMAIL",
+							"PUSH",
+							"NA"
+						]
+					}
+				},
+				"originId": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"phone": {
+					"type": "string"
+				}
+			}
+		},
+		"ListingFilters": {
+			"type": "object",
+			"properties": {
+				"bathrooms": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"beds": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"priceRange": {
+					"$ref": "#/definitions/PriceRange"
+				},
+				"status": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"ACTIVE",
+							"CLOSED",
+							"PENDING"
+						]
+					}
+				},
+				"style": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"APPARTMENTS",
+							"HOUSES",
+							"CONDOS",
+							"TOWNHOMES",
+							"MULTI_FAMILY"
+						]
+					}
+				}
+			}
+		},
+		"Client": {
+			"type": "object",
+			"required": [
+				"email",
+				"firstName",
+				"phone"
+			],
+			"properties": {
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"email": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hasUserAccount": {
+					"type": "boolean"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"listings": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"mlsAgentId": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"notificationType": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"PHONE",
+							"EMAIL",
+							"PUSH",
+							"NA"
+						]
+					}
+				},
+				"phone": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"ACTIVE",
+						"INACTIVE"
+					]
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"SELLERS_AGENT",
+						"BUYERS_AGENT",
+						"SELLER",
+						"BUYER"
+					]
+				}
+			}
+		},
+		"ListingShowingItemModel": {
+			"type": "object",
+			"properties": {
+				"buyersAgent": {
+					"$ref": "#/definitions/AgentModel"
+				},
+				"date": {
+					"type": "string"
+				},
+				"feedback": {
+					"$ref": "#/definitions/FeedbackModel"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"ShowingModel": {
+			"type": "object",
+			"properties": {
+				"agentFirstName": {
+					"type": "string"
+				},
+				"agentLastName": {
+					"type": "string"
+				},
+				"agentOfficeName": {
+					"type": "string"
+				},
+				"agentPhone": {
+					"type": "string"
+				},
+				"buyerAgentHash": {
+					"type": "string"
+				},
+				"buyerHash": {
+					"type": "string"
+				},
+				"confirmationStrategy": {
+					"type": "string",
+					"enum": [
+						"AUTO",
+						"BY_SELLER_AGENT",
+						"BY_SELLER"
+					]
+				},
+				"date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"listingCity": {
+					"type": "string"
+				},
+				"listingImage": {
+					"type": "string"
+				},
+				"listingPrice": {
+					"type": "string"
+				},
+				"listingState": {
+					"type": "string"
+				},
+				"listingStreetName": {
+					"type": "string"
+				},
+				"listingStreetNumber": {
+					"type": "string"
+				},
+				"listingZipCode": {
+					"type": "string"
+				},
+				"offerProvided": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"Don't know yet",
+						"No"
+					]
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"showingStatus": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				},
+				"timestamp": {
+					"type": "string"
+				}
+			}
+		},
+		"ListingModel": {
+			"type": "object",
+			"properties": {
+				"city": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"imageUrl": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"state": {
+					"type": "string"
+				},
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"zipCode": {
+					"type": "string"
+				}
+			}
+		},
+		"ApiResponseModel«Client»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/Client"
+				}
+			}
+		},
+		"ApiResponseModel«Map«string,List«AgentShowingItemModel»»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/AgentShowingItemModel"
+						}
+					}
+				}
+			}
+		},
+		"ApiResponseModel«List«ListingModel»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ListingModel"
+					}
+				}
+			}
+		},
+		"ApiResponseModel«ShowingDetailsModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/ShowingDetailsModel"
+				}
+			}
+		},
+		"SimpleListingModel": {
+			"type": "object",
+			"properties": {
+				"city": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"imageUrl": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"zipCode": {
+					"type": "string"
+				}
+			}
+		},
+		"ScheduledDatesWrapper": {
+			"type": "object",
+			"properties": {
+				"mlsZone": {
+					"type": "string"
+				},
+				"scheduledDates": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ListingScheduleDates"
+					}
+				}
+			}
+		},
+		"ApiResponseModel«FeedbackModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/FeedbackModel"
+				}
+			}
+		},
+		"AvailablePhonesModel": {
+			"type": "object",
+			"properties": {
+				"available": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"AgentProfileSnapshot": {
+			"type": "object",
+			"properties": {
+				"agent": {
+					"$ref": "#/definitions/AgentProfile"
+				},
+				"approvalRequestDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"client": {
+					"$ref": "#/definitions/Client"
+				},
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"email": {
+					"type": "string"
+				},
+				"feedbackDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"mlsAgentId": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"notificationType": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"PHONE",
+							"EMAIL",
+							"PUSH",
+							"NA"
+						]
+					}
+				},
+				"officeName": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"showingDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"syncShowings": {
+					"type": "boolean"
+				}
+			}
+		},
+		"ApiResponseModel«ScheduledShowingModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/ScheduledShowingModel"
+				}
+			}
+		},
+		"ApiResponseModel«List«ShowingDetailsModel»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ShowingDetailsModel"
+					}
+				}
+			}
+		},
+		"ApiResponseModel«Map«string,List«ListingShowingItemModel»»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/ListingShowingItemModel"
+						}
+					}
+				}
+			}
+		},
+		"ListingPlanModel": {
+			"type": "object",
+			"properties": {
+				"baths": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"bedrooms": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"city": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"imageUrl": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"squareFootage": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"state": {
+					"type": "string"
+				},
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"APPARTMENTS",
+						"HOUSES",
+						"CONDOS",
+						"TOWNHOMES",
+						"MULTI_FAMILY"
+					]
+				},
+				"zipCode": {
+					"type": "string"
+				}
+			}
+		},
+		"AgentShowingItemModel": {
+			"type": "object",
+			"properties": {
+				"buyer": {
+					"$ref": "#/definitions/UserModel«IUser»"
+				},
+				"date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"listing": {
+					"$ref": "#/definitions/ListingModel"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"ApiResponseModel«List«Client»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Client"
+					}
+				}
+			}
+		},
+		"ModelAndView": {
+			"type": "object",
+			"properties": {
+				"empty": {
+					"type": "boolean"
+				},
+				"model": {
+					"type": "object"
+				},
+				"modelMap": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "object"
+					}
+				},
+				"reference": {
+					"type": "boolean"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"100",
+						"101",
+						"102",
+						"103",
+						"200",
+						"201",
+						"202",
+						"203",
+						"204",
+						"205",
+						"206",
+						"207",
+						"208",
+						"226",
+						"300",
+						"301",
+						"302",
+						"303",
+						"304",
+						"305",
+						"307",
+						"308",
+						"400",
+						"401",
+						"402",
+						"403",
+						"404",
+						"405",
+						"406",
+						"407",
+						"408",
+						"409",
+						"410",
+						"411",
+						"412",
+						"413",
+						"414",
+						"415",
+						"416",
+						"417",
+						"418",
+						"419",
+						"420",
+						"421",
+						"422",
+						"423",
+						"424",
+						"426",
+						"428",
+						"429",
+						"431",
+						"451",
+						"500",
+						"501",
+						"502",
+						"503",
+						"504",
+						"505",
+						"506",
+						"507",
+						"508",
+						"509",
+						"510",
+						"511"
+					]
+				},
+				"view": {
+					"$ref": "#/definitions/View"
+				},
+				"viewName": {
+					"type": "string"
+				}
+			}
+		},
+		"ListingScheduleDates": {
+			"type": "object",
+			"properties": {
+				"date": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"slots": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"AgentProfile": {
+			"type": "object",
+			"properties": {
+				"approvalRequestDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"email": {
+					"type": "string"
+				},
+				"feedbackDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"mlsAgentId": {
+					"type": "string"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"notificationType": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"PHONE",
+							"EMAIL",
+							"PUSH",
+							"NA"
+						]
+					}
+				},
+				"officeName": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"showingDaysLimit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"syncShowings": {
+					"type": "boolean"
+				}
+			}
+		},
+		"ApiResponseModel«AgentStatisticModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/AgentStatisticModel"
+				}
+			}
+		},
+		"PriceRange": {
+			"type": "object",
+			"properties": {
+				"max": {
+					"type": "string"
+				},
+				"min": {
+					"type": "string"
+				}
+			}
+		},
+		"ScheduledShowingModel": {
+			"type": "object",
+			"properties": {
+				"date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"Map«string,List«ListingShowingItemModel»»": {
+			"type": "object",
+			"additionalProperties": {
+				"$ref": "#/definitions/List"
+			}
+		},
+		"Showing": {
+			"type": "object",
+			"required": [
+				"buyersAgent",
+				"listing"
+			],
+			"properties": {
+				"buyersAgent": {
+					"$ref": "#/definitions/AgentProfileSnapshot"
+				},
+				"clientName": {
+					"type": "string"
+				},
+				"confirmationStrategy": {
+					"type": "string",
+					"enum": [
+						"AUTO",
+						"BY_SELLER_AGENT",
+						"BY_SELLER"
+					]
+				},
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"date": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"listing": {
+					"$ref": "#/definitions/Listing"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Pending confirmation",
+						"Confirmed",
+						"Declined",
+						"Finished",
+						"Got feedback",
+						"Cancelled",
+						"Obsolete"
+					]
+				},
+				"upcomingNotificationSent": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Feedback": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string"
+				},
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"offerPossibility": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"Don't know yet",
+						"No"
+					]
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"read": {
+					"type": "boolean"
+				},
+				"showing": {
+					"$ref": "#/definitions/Showing"
+				}
+			}
+		},
+		"ApiResponseModel«ListingModel»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/ListingModel"
+				}
+			}
+		},
+		"ListingCoordinates": {
+			"type": "object",
+			"properties": {
+				"latitude": {
+					"type": "number",
+					"format": "double"
+				},
+				"longitude": {
+					"type": "number",
+					"format": "double"
+				}
+			}
+		},
+		"Map«string,List«AgentShowingItemModel»»": {
+			"type": "object",
+			"additionalProperties": {
+				"$ref": "#/definitions/List"
+			}
+		},
+		"UserModel«IUser»": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"hash": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				}
+			}
+		},
+		"ApiResponseModel«List«SimpleListingModel»»": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SimpleListingModel"
+					}
+				}
+			}
+		},
+		"View": {
+			"type": "object",
+			"properties": {
+				"contentType": {
+					"type": "string"
+				}
+			}
+		},
+		"FeedbackModel": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string"
+				},
+				"date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"offer": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"Don't know yet",
+						"No"
+					]
+				},
+				"rating": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"read": {
+					"type": "boolean"
+				}
+			}
+		},
+		"ListingMapRequest": {
+			"type": "object",
+			"properties": {
+				"bottomLeft": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"bottomRight": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"coordinates": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"fields": {
+					"type": "string"
+				},
+				"filters": {
+					"$ref": "#/definitions/ListingFilters"
+				},
+				"limit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"radius": {
+					"type": "string"
+				},
+				"searchQuery": {
+					"type": "string"
+				},
+				"topLeft": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"topRight": {
+					"$ref": "#/definitions/ListingCoordinates"
+				}
+			}
+		},
+		"ScheduleShowingModel": {
+			"type": "object",
+			"properties": {
+				"date": {
+					"type": "string"
+				},
+				"listing": {
+					"$ref": "#/definitions/Listing"
+				},
+				"time": {
+					"type": "string"
+				}
+			}
+		},
+		"Listing": {
+			"type": "object",
+			"properties": {
+				"baths": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"bedrooms": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"city": {
+					"type": "string"
+				},
+				"confirmationStrategy": {
+					"type": "string",
+					"enum": [
+						"AUTO",
+						"BY_SELLER_AGENT",
+						"BY_SELLER"
+					]
+				},
+				"coordinates": {
+					"$ref": "#/definitions/ListingCoordinates"
+				},
+				"creationDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"hasBasement": {
+					"type": "boolean"
+				},
+				"hasDailyNotice": {
+					"type": "boolean"
+				},
+				"hasGarage": {
+					"type": "boolean"
+				},
+				"id": {
+					"type": "string"
+				},
+				"imageUrl": {
+					"type": "string"
+				},
+				"lastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"sellerAgent": {
+					"$ref": "#/definitions/AgentProfile"
+				},
+				"sellerClient": {
+					"$ref": "#/definitions/Client"
+				},
+				"showingInstructions": {
+					"type": "string"
+				},
+				"squareFootage": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string",
+					"example": "ACTIVE or CLOSED",
+					"enum": [
+						"ACTIVE",
+						"CLOSED",
+						"PENDING"
+					]
+				},
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"APPARTMENTS",
+						"HOUSES",
+						"CONDOS",
+						"TOWNHOMES",
+						"MULTI_FAMILY"
+					]
+				},
+				"unitNumber": {
+					"type": "string"
+				},
+				"zipCode": {
+					"type": "string"
+				}
+			}
+		},
+		"ShowingSetupModel": {
+			"type": "object",
+			"properties": {
+				"agent": {
+					"$ref": "#/definitions/AgentProfile"
+				},
+				"client": {
+					"$ref": "#/definitions/Client"
+				},
+				"clientId": {
+					"type": "string"
+				},
+				"confirmationStrategy": {
+					"type": "string",
+					"enum": [
+						"AUTO",
+						"BY_SELLER_AGENT",
+						"BY_SELLER"
+					]
+				},
+				"daylyNotice": {
+					"type": "boolean"
+				},
+				"mlsId": {
+					"type": "string"
+				},
+				"mlsListingId": {
+					"type": "string"
+				},
+				"showingInstructions": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

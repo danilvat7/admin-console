@@ -1,0 +1,16 @@
+.mls-table {
+  & .table-search {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
+
+    input {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}

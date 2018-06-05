@@ -1,0 +1,514 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Primeshowing API reference for IPhon UI development",
+    "version": "1.0",
+    "title": "Primeshowing",
+    "termsOfService": "http://primeshowing.com",
+    "license": {
+      "name": "Primeshowing License",
+      "url": "primeshowing@gmail.com"
+    }
+  },
+  "host": "stagingmob.primeshowing.com",
+  "basePath": "/",
+  "tags": [{
+    "name": "user-controller",
+    "description": "User Controller"
+  }],
+  "paths": {
+    "/user/confirm": {
+      "get": {
+        "tags": ["user-controller"],
+        "summary": "confirmUserAccount",
+        "operationId": "confirmUserAccountUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "hash",
+          "in": "query",
+          "description": "hash",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/delete": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "delete",
+        "operationId": "deleteUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "model",
+          "description": "model",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/DeleteSellerAccountModel"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/forgotpassword": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "forgotpassword",
+        "operationId": "forgotpasswordUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "model",
+          "description": "model",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/RestorePasswordModel"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "login",
+        "operationId": "loginUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "user",
+          "description": "user",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/mlsTokens": {
+      "get": {
+        "tags": ["user-controller"],
+        "summary": "getMlsTokens",
+        "operationId": "getMlsTokensUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Mls"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/registration": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "register",
+        "operationId": "registerUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "user",
+          "description": "user",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/setup": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "accountSetup",
+        "operationId": "accountSetupUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "model",
+          "description": "model",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/AccountSetupModel"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/signout": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "signOut",
+        "operationId": "signOutUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "model",
+          "description": "model",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/SignOutModel"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/update": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "updateUser",
+        "operationId": "updateUserUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "approvalRequestDaysLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cellPhone": {
+          "type": "string"
+        },
+        "confirmationSenderPhone": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deviceToken": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "feedbackDaysLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "mlsId": {
+          "type": "string"
+        },
+        "notificationType": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["PHONE", "EMAIL", "PUSH", "NA"]
+          }
+        },
+        "originId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "registerConfirmationType": {
+          "type": "string",
+          "enum": ["SMS", "EMAIL"]
+        },
+        "showingDaysLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ACTIVE", "INACTIVE", "NOT_ACTIVATED"]
+        },
+        "syncShowings": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["AGENT", "SELLER"]
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthModel": {
+      "type": "object",
+      "properties": {
+        "firstMonthForFree": {
+          "type": "boolean"
+        },
+        "firstTimeLogin": {
+          "type": "boolean"
+        },
+        "mlsServiceDomain": {
+          "type": "string"
+        },
+        "pricePerMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "Mls": {
+      "type": "object",
+      "properties": {
+        "firstMonthForFree": {
+          "type": "boolean"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "mlsId": {
+          "type": "string"
+        },
+        "phoneTemplate": {
+          "type": "string"
+        },
+        "pricePerMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "supportPhone": {
+          "type": "string"
+        }
+      }
+    },
+    "SignOutModel": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteSellerAccountModel": {
+      "type": "object",
+      "properties": {
+        "seller": {
+          "$ref": "#/definitions/User"
+        },
+        "sellerAgent": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "AccountSetupModel": {
+      "type": "object",
+      "properties": {
+        "newPassword": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "RestorePasswordModel": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "mlsId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["AGENT", "SELLER"]
+        }
+      }
+    }
+  }
+}

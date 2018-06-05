@@ -1,0 +1,11 @@
+.form-group {
+  margin-bottom: 15px;
+}
+
+// Dropdowns
+.ui-dropdown {
+  &.mls-dropdown {
+    min-width: 180px;
+  }
+}
+

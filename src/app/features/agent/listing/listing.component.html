@@ -1,0 +1,20 @@
+<div class="sellers-holder" *ngIf="sellObjectsList && sellObjectsList.length">
+  <psh-sellers-list [data]="sellObjectsList" (sellerSelect)="onSellerSelect($event)" (sellerEditor)="sellerEditor($event)"></psh-sellers-list>
+</div>
+<div class="buyers-holder" *ngIf="buyersList && buyersList.length">
+  <psh-buyers-list [data]="buyersList"></psh-buyers-list>
+</div>
+
+<div *ngIf="sellObjectsList && !sellObjectsList.length">
+  Seller list is empty
+</div>
+
+<div *ngIf="buyersList && !buyersList.length">
+  Show list is empty
+</div>
+
+
+<p-dialog [width]="460" [modal]="true" header="Edit Seller" [(visible)]="showModal" [closable]="false">
+    <psh-edit-seller-form (submit)="saveSellerInfo($event)" (cancel)="cancel()" [currentSellObject]="currentSellObject"></psh-edit-seller-form>
+
+</p-dialog>

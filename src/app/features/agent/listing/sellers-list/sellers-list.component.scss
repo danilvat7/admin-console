@@ -1,0 +1,10 @@
+.sm-col {
+  width: 7%;
+}
+.truncate {
+  display: block;
+  width: 52px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

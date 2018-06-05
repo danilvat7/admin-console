@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
+#app-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  #header {
+    flex: 0 1 auto;
+  }
+
+  #content {
+    flex: 1 1 auto;
+  }
+}

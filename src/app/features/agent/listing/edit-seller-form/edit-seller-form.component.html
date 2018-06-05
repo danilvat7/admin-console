@@ -1,0 +1,56 @@
+<div *ngIf="currentSellObject">
+  <div class="seller-description">
+    <p>
+      <span>MLS ID: {{currentSellObject.mlsListingId}}
+      </span>
+    </p>
+    <p>
+      <span>Address: {{currentSellObject.streetNumber + ' ' + currentSellObject.streetName + ' ' + currentSellObject.city + ' '
+        + currentSellObject.state + ' ' + currentSellObject.zipCode}}
+      </span>
+    </p>
+  </div>
+
+  <form class="form" [formGroup]="editForm">
+
+    <div class="seller-select">
+      <p-radioButton name="seller" value="no seller" label="No seller" formControlName="seller"></p-radioButton>
+      <p-radioButton name="seller" value="new seller" label="New seller" formControlName="seller"></p-radioButton>
+      <div class="choose">
+        <p-radioButton name="seller" value="fromList" formControlName="seller"></p-radioButton>
+        <p-dropdown [options]="sellers" #ddSellers formControlName="ddSeller" (onChange)="onSellerChange(ddSellers.value)" placeholder="Select seller"></p-dropdown>
+      </div>
+    </div>
+    <div class="control-row">
+      <div class="control-col">
+        <div class="form-group">
+          <input pInputText type="text" formControlName="firstName" placeholder="Agent's First Name" name="fName" class="form-control">
+        </div>
+        <div class="form-group">
+          <input pInputText type="text" formControlName="lastName" placeholder="Agent's Last Name" name="lName" class="form-control">
+        </div>
+        <div class="form-group">
+          <input pInputText type="number" formControlName="phone" placeholder="Phone Number" name="phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <input pInputText type="email" formControlName="email" placeholder="Email" name="email" class="form-control">
+        </div>
+      </div>
+
+      <div class="control-col notification-method">
+        <h4>Notification Method</h4>
+        <div class="form-group">
+          <p-checkbox name="group" value="Email" label="Email" [formControl]="editForm.controls['notificationType']"></p-checkbox>
+          <p-checkbox name="group" value="SMS" label="SMS" [formControl]="editForm.controls['notificationType']"></p-checkbox>
+          <p-checkbox name="group" value="Push notification" label="Push notification" [formControl]="editForm.controls['notificationType']"></p-checkbox>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="btns-holder">
+    <button pButton type="button" (click)="saveSellerInfo()" label="Save" class="ui-button-success"></button>
+    <button pButton type="button" (click)="onCancel()" label="Cancel" class="ui-button-danger"></button>
+  </div>
+</div>
