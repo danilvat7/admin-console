@@ -1,4 +1,4 @@
-<p-table [scrollable]="true" scrollHeight="300px" [value]="listig" selectionMode="single" [(selection)]="selectedSeller">
+<p-table [scrollable]="true" scrollHeight="300px" [value]="listig" selectionMode="single" [(selection)]="selectedSeller" (onRowSelect)="onSelectSeller()">
     <ng-template pTemplate="header">
       <tr>
         <!-- <th style="width: 2.25em"></th> -->

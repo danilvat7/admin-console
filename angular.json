@@ -28,7 +28,9 @@
               "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/mls-app.js"
+            ]
           },
           "configurations": {
             "production": {

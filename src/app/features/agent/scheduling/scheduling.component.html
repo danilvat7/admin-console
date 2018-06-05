@@ -4,10 +4,10 @@
     
           <p-dropdown placeholder="Select the field to filter" [options]="searchType" [(ngModel)]="selectedSearchType"></p-dropdown>
          
-          <input (keyup)=filter() [disabled]="!selectedSearchType" [(ngModel)]="queryString" pInputText type="text">
-    
+          <input placeholder="Search..." (keyup)=filter() [disabled]="!selectedSearchType" [(ngModel)]="queryString" pInputText type="text">
+          <div id="listing_details_container"></div>
       </div>
   </div>
  
-  <app-full-listing [listig]="filteredList"></app-full-listing>
+  <app-full-listing (selectSeller)="onSelectSeller($event)" [listig]="filteredList"></app-full-listing>
 </div>

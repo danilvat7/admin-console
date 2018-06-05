@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AgentService } from '../agent.service';
 import { Subscription } from 'rxjs/Subscription';
 import { IAgent } from '../../../core/models/agent.model';
-
 @Component({
   selector: 'psh-showing',
   templateUrl: './showing.component.html',

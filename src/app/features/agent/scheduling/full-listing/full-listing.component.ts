@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IListingObject } from '../../../../core/models/listing-object';
 
 @Component({
@@ -8,14 +8,15 @@ import { IListingObject } from '../../../../core/models/listing-object';
 })
 export class FullListingComponent implements OnInit {
   @Input() listig: IListingObject[];
-
+  @Output() selectSeller = new EventEmitter<IListingObject>();
   selectedSeller: IListingObject;
 
   constructor() { }
 
   ngOnInit() {
   }
-  click(item: IListingObject)  {
-    this.selectedSeller = item;
+
+  onSelectSeller() {
+    this.selectSeller.emit(this.selectedSeller)
   }
 }
