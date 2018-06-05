@@ -18,12 +18,12 @@
         <span class="truncate">{{item.mlsListingId}}</span>
       </td>
       <td>{{item.streetNumber + ' ' + item.streetName + ' ' + item.city + ' ' + item.state + ' ' + item.zipCode}}</td>
-      <td>{{item.sellerClient || 'N/A'}}</td>
-      <td>{{item.phone || 'N/A'}}</td>
-      <td>{{item.email || 'N/A'}}</td>
+      <td>{{item.sellerClient && item.sellerClient.firstName + ' ' + item.sellerClient.lastName || 'N/A'}}</td>
+      <td>{{item.sellerClient && item.sellerClient.phone || 'N/A'}}</td>
+      <td>{{item.sellerClient && item.sellerClient.email || 'N/A'}}</td>
       <td>{{item.showingInstructions || 'N/A'}}</td>
       <td>{{item.notificationType  || 'N/A'}}</td>
-      <td>{{item.showingNum}}</td>
+      <td>{{item.showingNum || 'N/A'}}</td>
       <td>
         <p-button (onClick)="editSeller(item)" label="Edit seller"></p-button>
       </td>

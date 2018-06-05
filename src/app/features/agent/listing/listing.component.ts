@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SellObject } from '../../../core/models/sell-object.model';
 import { AgentService } from '../agent.service';
 import { Subscription } from 'rxjs/Subscription';
 import { IAgent } from '../../../core/models/agent.model';
 import { Show } from '../../../core/models/show.model';
-import { Partner } from '../../../core/models/partner.model';
 import { FormGroup } from '@angular/forms';
+import { IListingObject } from '../../../core/models/listing-object';
 
 @Component({
   selector: 'psh-listing',
@@ -14,10 +13,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class ListingComponent implements OnInit, OnDestroy {
   agentId: string | number;
-  sellObjectsList: SellObject[] = [];
+  sellObjectsList: IListingObject[] = [];
   buyersList: Show[];
   subscription: Subscription;
-  currentSellObject: SellObject;
+  currentSellObject: IListingObject;
   showModal = false;
 
   constructor(
@@ -30,11 +29,7 @@ export class ListingComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         if (data) {
           this.agentId = data.id;
-          this.agentService
-            .getAgentListing({ id: this.agentId })
-            .subscribe(response => {
-              this.sellObjectsList = response;
-            });
+          this.getAgentListing({ id: this.agentId });
         }
       });
   }
@@ -43,6 +38,13 @@ export class ListingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  getAgentListing(params?) {
+    this.agentService
+    .getAgentListing(params)
+    .subscribe(response => {
+      this.sellObjectsList = response;
+    });
+  }
   getBuyersList(mlsId, mlsListingId) {
     this.agentService
       .getShowingsBySellObj({ mlsId, mlsListingId })
@@ -52,18 +54,23 @@ export class ListingComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSellerSelect(event: SellObject) {
+  onSellerSelect(event: IListingObject) {
     const { mlsId, mlsListingId } = event;
     this.getBuyersList(mlsId, mlsListingId);
   }
 
-  sellerEditor(event: SellObject) {
+  sellerEditor(event: IListingObject) {
     this.currentSellObject = event;
     this.showModal = true;
   }
 
   saveSellerInfo(event: FormGroup) {
-    console.log(event.value);
+    this.agentService.saveSeller(event.value).subscribe(response => {
+      this.showModal = false;
+      this.getAgentListing({ id: this.agentId });
+    }, error => {
+      console.log(error);
+    });
   }
 
   cancel() {

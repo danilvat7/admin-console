@@ -1,3 +1,4 @@
+import { IAgent } from './../../../../core/models/agent.model';
 import {
   Component,
   OnInit,
@@ -11,11 +12,11 @@ import {
   AfterViewInit,
   DoCheck
 } from '@angular/core';
-import { SellObject } from '../../../../core/models/sell-object.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Partner } from '../../../../core/models/partner.model';
+import { IPartner } from '../../../../core/models/partner.model';
 import { AgentService } from '../../agent.service';
+import { IListingObject } from '../../../../core/models/listing-object';
 
 @Component({
   selector: 'psh-edit-seller-form',
@@ -24,50 +25,76 @@ import { AgentService } from '../../agent.service';
 })
 export class EditSellerFormComponent
   implements OnInit, OnChanges, OnDestroy, DoCheck {
-  @Input() currentSellObject: SellObject;
+  @Input() currentSellObject: IListingObject;
   @Output() cancel = new EventEmitter<any>();
   @Output() submit = new EventEmitter<FormGroup>();
   @ViewChild('ddSellers') ddSellers: ElementRef;
-  subscription: Subscription;
-  editForm: FormGroup;
-  selectedSeller: any;
-  sellers: any;
+  subscriptionSellers: Subscription;
+  subscriptionToAgent: Subscription;
+  form: FormGroup;
+  agent: IAgent;
+  sellers: IPartner[];
+  selectedSeller: IPartner;
+  ddSellerValue: any[];
   constructor(private fb: FormBuilder, private agentService: AgentService) {}
 
   ngOnInit() {
-    this.subscription = this.agentService
-      .select<Partner[]>('sellers')
+    this.subscriptionSellers = this.agentService
+      .select<IPartner[]>('sellers')
       .subscribe(data => {
         if (data) {
-          this.sellers = data.map(item => {
+          this.sellers = data;
+          this.ddSellerValue = this.sellers.map(item => {
             return {
-              label: `${item['firstName']} ${item['lastName']}`,
-              value: `${item['firstName']} ${item['lastName']}`
+              label: `${item.firstName} ${item.lastName}`,
+              value: item.id
             };
           });
         }
       });
+
+      this.subscriptionToAgent = this.agentService
+      .select<IAgent>('agentData').subscribe(data => {
+        if (data) {
+         this.agent = data;
+        }
+      });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionSellers.unsubscribe();
+    this.subscriptionToAgent.unsubscribe();
   }
   ngOnChanges() {
     if (this.currentSellObject) {
-      this.editForm = this.fb.group({
-        seller: ['', Validators.required],
+      this.form = this.fb.group({
+        seller: [this.currentSellObject.sellerClient ? 'seller' : 'no seller', Validators.required],
         ddSeller: ['', Validators.required],
-        firstName: ['', [Validators.required]],
-        lastName: ['', Validators.required],
-        phone: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        notificationType: ['']
+        client: this.fb.group({
+          firstName: ['', [Validators.required]],
+          lastName: ['', Validators.required],
+          phone: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          notificationType: ['']
+        })
       });
-      this.editForm.get('ddSeller').disable();
-      this.editForm.get('seller').valueChanges.subscribe(value => {
-        if (value === 'no seller' || value === 'new seller') {
-          this.editForm.get('ddSeller').disable();
+      this.form.get('client').disable();
+      this.form.get('ddSeller').disable();
+      this.form.get('seller').valueChanges.subscribe(value => {
+        if (value === 'fromList') {
+          this.form.get('ddSeller').enable();
+          this.form.get('client').disable();
+        } else if (value === 'no seller') {
+          this.form.get('ddSeller').disable();
+          this.form.get('ddSeller').reset();
+          this.selectedSeller = null;
+          this.form.get('client').disable();
+          this.form.get('client').reset();
         } else {
-          this.editForm.get('ddSeller').enable();
+          this.form.get('ddSeller').disable();
+          this.form.get('ddSeller').reset();
+          this.selectedSeller = null;
+          this.form.get('client').enable();
+          this.form.get('client').reset();
         }
       });
     }
@@ -77,20 +104,27 @@ export class EditSellerFormComponent
 
   }
   saveSellerInfo() {
-    const seller = this.editForm.value.seller;
-    if (seller === 'fromList') {
-      this.editForm.value.seller = this.editForm.value.ddSeller;
+    this.form.value['agent'] = this.agent;
+    this.form.value['mlsId'] = this.currentSellObject.mlsId;
+    this.form.value['mlsListingId'] = this.currentSellObject.mlsListingId;
+    delete this.form.value['seller'];
+    delete this.form.value['ddSeller'];
+    if (this.selectedSeller) {
+      this.form.value.client = this.selectedSeller;
     }
-    this.submit.emit(this.editForm);
+    this.submit.emit(this.form);
   }
 
   onCancel() {
     this.cancel.emit();
     this.currentSellObject = null;
-    this.editForm = null;
+    this.form = null;
   }
 
   onSellerChange(value: any) {
-    console.log(value);
+    this.selectedSeller = this.sellers.find(item => {
+      return  item.id === value;
+    });
+    this.form.get('client').patchValue(this.selectedSeller);
   }
 }

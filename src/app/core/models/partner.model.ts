@@ -1,4 +1,4 @@
-export interface Partner {
+export interface IPartner {
     id?: number;
     creationDate?: number;
     lastModified?: number;
@@ -8,7 +8,7 @@ export interface Partner {
     phone?: string;
     email?: string;
     status?: string;
-    notificationType?: [string];
+    notificationType?: string[];
     type?: string;
     hasUserAccount?: boolean;
     originId?: number;

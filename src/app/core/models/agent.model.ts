@@ -1,20 +1,21 @@
 export interface IAgent {
-  approvalRequestDaysLimit?: number;
-  creationDate?: number;
-  email?: string;
-  feedbackDaysLimit?: number;
-  firstName?: string;
-  hash?: string;
   id?: number | string;
+  creationDate?: number;
   lastModified?: number;
-  lastName?: string;
   mlsAgentId?: number | string;
-  mlsId?: string;
-  notificationType?: string[];
-  originId?: number | string;
-  showingDaysLimit?: number;
-  status?: string;
-  syncShowings?: boolean;
+  hash?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
   phone?: string;
+  notificationType?: string[];
+  mlsId?: string;
+  syncShowings?: boolean;
+  showingDaysLimit?: number;
+  feedbackDaysLimit?: number;
+  approvalRequestDaysLimit?: number;
+  status?: string;
+  hasUserAccount: boolean;
+  originId?: number | string;
 }
 

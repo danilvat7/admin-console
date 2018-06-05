@@ -15,6 +15,7 @@ import { BuyersListComponent } from './listing/buyers-list/buyers-list.component
 import { EditSellerFormComponent } from './listing/edit-seller-form/edit-seller-form.component';
 import { ShowingsListComponent } from './showing/showings-list/showings-list.component';
 import { EditBuyerFormComponent } from './showing/edit-buyer-form/edit-buyer-form.component';
+import { FullListingComponent } from './scheduling/full-listing/full-listing.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditBuyerFormComponent } from './showing/edit-buyer-form/edit-buyer-for
     BuyersListComponent,
     EditSellerFormComponent,
     ShowingsListComponent,
-    EditBuyerFormComponent
+    EditBuyerFormComponent,
+    FullListingComponent
   ],
   imports: [
     CommonModule,

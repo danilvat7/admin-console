@@ -30,24 +30,6 @@ export class AgentsListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // this.agentSubscription = this.agentService.agentChanged
-    //   .subscribe(
-    //     (agents: Agent[]) => {
-    //       this.agents = agents;
-    //     }
-    //   );
-    // this.agents = this.agentService.getAgents();
-
-    // this.agentActions = [
-    //   {
-    //     label: 'New Agent',
-    //     icon: 'fa-plus',
-    //     command: () => {
-    //       this.newAgent();
-    //     }
-    //   }
-    // ];
-
     this.cols = [
       { field: 'firstName', header: 'First Name' },
       { field: 'lastName', header: 'Last Name' },
@@ -65,31 +47,20 @@ export class AgentsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.agentSubscription.unsubscribe();
   }
 
-  // onAgentChoose(agent) {
-  //   this.dataService.agent = agent;
-  //   this.router.navigate([`${agent.mlsAgentId}`], { relativeTo: this.route });
-  //   console.log('choose agent id: ', agent.mlsAgentId);
-  // }
-
-  // saveCurrentId(agent) {
-  //   this.choosenAgent = agent;
-  // }
-
-  // newAgent() {
-  //   console.log(this.currentId);
-  //   this.dataService.agent = this.choosenAgent;
-  //   this.router.navigate([`${this.choosenAgent.mlsAgentId}/create`], {
-  //     relativeTo: this.route
-  //   });
-  // }
 
   onChooseChage(option, agent: any) {
     this.dataService.agent = agent;
     const path = option.value.value === 'create' ? '/create' : '';
-    this.router.navigate([`${agent.mlsAgentId}${path}`], {
+    this.router.navigate([`${agent.id}${path}`], {
+      relativeTo: this.route
+    });
+  }
+
+  actionEvent(path, agent: any) {
+    this.dataService.agent = agent;
+    this.router.navigate([`${agent.id}/${path}`], {
       relativeTo: this.route
     });
   }

@@ -4,7 +4,6 @@ import { MenuItem } from 'primeng/api';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AgentService } from './agent.service';
 import { IAgent } from '../../core/models/agent.model';
-import { SellObject } from '../../core/models/sell-object.model';
 
 @Component({
   selector: 'psh-agent',
@@ -35,6 +34,16 @@ export class AgentComponent implements OnInit {
 
     this.agentService.getPrtners({ id, type: 'BUYER' }).subscribe(response => {
       this.agentService.set('buyers', response);
+    });
+
+    this.agentService.getFullListing({mlsId}).subscribe(response => {
+      const data = response.map(item => {
+        return {
+          address: `${item.streetNumber} ${item.streetName} ${item.city} ${item.state} ${item.zipCode}`,
+          ...item
+        };
+      });
+      this.agentService.set('fullListing', data);
     });
 
     this.items = [

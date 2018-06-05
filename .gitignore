@@ -1,2 +1,13 @@
 # Dependency directories
 node_modules/
+
+# Generated files
+dist/
+
+# VSCode files
+.vscode/
+
+# WebStorm files
+.idea/
+
+# package-lock.json

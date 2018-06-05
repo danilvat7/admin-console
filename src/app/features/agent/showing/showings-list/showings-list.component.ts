@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SellObject } from '../../../../core/models/sell-object.model';
 import { FormGroup } from '@angular/forms';
 
 @Component({

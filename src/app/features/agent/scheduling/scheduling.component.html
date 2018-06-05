@@ -1,4 +1,13 @@
-<p>
-  scheduling works!
-</p>
-<div id="listing_details_container"></div>
+<div class="wrapper">
+  <div class="filter-sidebar">
+      <div class="search-holder">
+    
+          <p-dropdown placeholder="Select the field to filter" [options]="searchType" [(ngModel)]="selectedSearchType"></p-dropdown>
+         
+          <input (keyup)=filter() [disabled]="!selectedSearchType" [(ngModel)]="queryString" pInputText type="text">
+    
+      </div>
+  </div>
+ 
+  <app-full-listing [listig]="filteredList"></app-full-listing>
+</div>

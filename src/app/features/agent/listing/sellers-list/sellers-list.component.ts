@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { SellObject } from '../../../../core/models/sell-object.model';
+import { IListingObject } from '../../../../core/models/listing-object';
 
 @Component({
   selector: 'psh-sellers-list',
@@ -7,11 +7,11 @@ import { SellObject } from '../../../../core/models/sell-object.model';
   styleUrls: ['./sellers-list.component.scss']
 })
 export class SellersListComponent {
-  @Input() data: SellObject[];
-  @Output() sellerSelect = new EventEmitter<SellObject>();
-  @Output() sellerEditor = new EventEmitter<SellObject>();
+  @Input() data: IListingObject[];
+  @Output() sellerSelect = new EventEmitter<IListingObject>();
+  @Output() sellerEditor = new EventEmitter<IListingObject>();
   sellers: any[];
-  selectedSeller: SellObject;
+  selectedSeller: IListingObject;
 
   constructor() {}
 

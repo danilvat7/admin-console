@@ -11,10 +11,9 @@ import {
   AfterViewInit,
   DoCheck
 } from '@angular/core';
-import { SellObject } from '../../../../core/models/sell-object.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Partner } from '../../../../core/models/partner.model';
+import { IPartner } from '../../../../core/models/partner.model';
 import { AgentService } from '../../agent.service';
 
 @Component({
@@ -34,7 +33,7 @@ export class EditBuyerFormComponent
 
   ngOnInit() {
     this.subscription = this.agentService
-      .select<Partner[]>('buyers')
+      .select<IPartner[]>('buyers')
       .subscribe(data => {
         if (data) {
           this.buyers = data.map(item => {

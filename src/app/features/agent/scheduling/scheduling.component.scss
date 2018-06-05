@@ -1,0 +1,15 @@
+
+.wrapper {
+    display: flex;
+.filter-sidebar {
+    display: flex;
+    margin-right: 30px;
+    .search-holder {
+        display: flex;
+        flex-direction: column;
+        p-dropdown {
+            margin-bottom: 15px;
+        }
+    }
+    }
+}

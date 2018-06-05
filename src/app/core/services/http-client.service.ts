@@ -37,10 +37,18 @@ export class HttpClientService {
       .pipe(map(this.handleResponse), catchError(this.handlerError));
   }
 
+   // POST
+   post<T>(url, data, paramsObj?): Observable<any> {
+    this.setHttpEscort(paramsObj);
+    return this.http
+      .post<any>(`${this.api}/${url}`, data, this.httpOptions)
+      .pipe(map(this.handleResponse), catchError(this.handlerError));
+  }
+
   handleResponse(response): Observable<any> {
     return response.data;
   }
   handlerError(error: Error): Observable<any> {
-    return of(error || 'Server error');
+    throw of(error || 'Server error');
   }
 }
