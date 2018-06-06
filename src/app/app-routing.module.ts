@@ -20,11 +20,12 @@ const appRoutes: Routes = [
   {
     path: 'mls/:mlsId/agents/:id',
     loadChildren: './features/agent/agent.module#AgentModule',
-   resolve: { agentData: AgentResolver }
+    resolve: { agentData: AgentResolver }
   },
   {
     path: 'mls/:mlsId/agents/:id/create',
-    loadChildren: './features/new-agent/new-agent.module#NewAgentModule'
+    loadChildren: './features/new-agent/new-agent.module#NewAgentModule',
+    resolve: { agentData: AgentResolver }
   },
   { path: '**', redirectTo: '/mls' }
 ];

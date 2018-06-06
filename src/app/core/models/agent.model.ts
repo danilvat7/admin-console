@@ -17,5 +17,7 @@ export interface IAgent {
   status?: string;
   hasUserAccount: boolean;
   originId?: number | string;
+  username?: string;
+  password?: string;
 }
 

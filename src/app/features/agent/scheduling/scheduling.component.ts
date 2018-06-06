@@ -14,8 +14,7 @@ import { AgentService } from '../agent.service';
 @Component({
   selector: 'psh-scheduling',
   templateUrl: './scheduling.component.html',
-  styleUrls: ['./scheduling.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./scheduling.component.scss']
 })
 export class SchedulingComponent implements OnInit, AfterViewInit, OnDestroy {
   listig: IListingObject[];

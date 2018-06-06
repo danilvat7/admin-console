@@ -94,7 +94,7 @@ PS._configure = function (settings) {
         PS.inited = true;
 
         importScript('https://cdn.jsdelivr.net/jquery.migrate/1.4.1/jquery-migrate.min.js', jsCssCallback);
-        importCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', jsCssCallback);
+        // importCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', jsCssCallback);
         importCSS(PS.model[Object.keys(PS.model)[0]].remotePath + '/style.css', jsCssCallback);
 
     }
@@ -104,7 +104,7 @@ PS._configure = function (settings) {
 
 function jsCssCallback() {
     PS.loadCounter += 1;
-    if (PS.loadCounter == 3) {
+    if (PS.loadCounter == 2) {
         initStyles();
         $(".modal-demo").show();
     }
