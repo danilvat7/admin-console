@@ -16,7 +16,9 @@
     display: flex;
     justify-content: space-between;
   }
-
+  .form-group {
+    width: auto;
+  }
   .notification-method {
     padding: 0 25px;
     h4 {
