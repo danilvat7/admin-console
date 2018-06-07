@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'psh-new-agent',
   templateUrl: './new-agent.component.html',
-  styleUrls: ['./new-agent.component.css']
+  styleUrls: ['./new-agent.component.scss']
 })
 export class NewAgentComponent implements OnInit {
   form: FormGroup;

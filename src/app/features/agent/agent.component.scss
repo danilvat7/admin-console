@@ -11,4 +11,25 @@
       word-wrap: break-word;
     }
   }
+  .empty-list {
+    width: 210px;
+    font-size: 20px;
+    padding: 10px;
+  }
+
+}
+
+.name {
+  font-size: 30px;
+  margin-bottom: 15px;
+  span {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+.contacts {
+  p {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }

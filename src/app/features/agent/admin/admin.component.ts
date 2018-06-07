@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IAgent } from '../../../core/models/agent.model';
+import { Subscription } from 'rxjs/Subscription';
+import { AgentService } from '../agent.service';
 
 @Component({
   selector: 'psh-admin',
@@ -9,23 +12,34 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
   form: FormGroup;
-
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
+  agentData: IAgent;
+  subscription: Subscription;
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private agentService: AgentService
+  ) {}
 
   ngOnInit() {
-    console.log(this.route.snapshot.data);
-    this.buildForm();
+    this.subscription = this.agentService
+      .select<IAgent>('agentData')
+      .subscribe(data => {
+        if (data) {
+          this.agentData = data;
+          this.buildForm();
+        }
+      });
   }
   buildForm() {
     this.form = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      firstName: [this.agentData.firstName || '', [Validators.required]],
+      lastName: [this.agentData.lastName || '', Validators.required],
+      phone: [+this.agentData.phone || '', Validators.required],
+      email: [this.agentData.email || '', [Validators.required, Validators.email]],
+      username: [this.agentData.username || '', Validators.required],
+      password: [this.agentData.password || '', Validators.required],
       confirmPassword: ['', Validators.required],
-      notificationType: ['']
+      notificationType: [this.agentData.notificationType || '', Validators.required]
     });
   }
 

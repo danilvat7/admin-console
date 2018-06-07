@@ -1,44 +1,46 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <p-table #dt class="mls-table" [columns]="cols" [value]="agents" [paginator]="true" [rows]="50">
-      <ng-template pTemplate="header" let-columns>
-        <tr>
-          <th *ngFor="let col of columns">
-            {{col.header}}
-          </th>
-        </tr>
-        <tr>
-          <th *ngFor="let col of columns; let i = index; let last = last" [ngSwitch]="col.field">
-            <ng-template [ngIf]="!last && i !== columns.length - 2">
-              <div class="table-search">
-                <label for="s_{{col.field}}">
-                  <i class="fa fa-search"></i>
-                </label>
-                <input pInputText type="text" id="s_{{col.field}}"
-                       (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-              </div>
-            </ng-template>
-          </th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of columns; let last = last">
-            <ng-template [ngIf]="last">
+    <div class="preloader-wrapper">
+      <app-preloader [loading]="loading"></app-preloader>
+      <p-table #dt class="mls-table" [columns]="cols" [value]="agents" [paginator]="true" [rows]="50">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col.header}}
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let col of columns; let i = index; let last = last" [ngSwitch]="col.field">
+              <ng-template [ngIf]="!last && i !== columns.length - 2">
+                <div class="table-search">
+                  <label for="s_{{col.field}}">
+                    <i class="fa fa-search"></i>
+                  </label>
+                  <input pInputText type="text" id="s_{{col.field}}" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                </div>
+              </ng-template>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns; let last = last">
+              <ng-template [ngIf]="last">
 
                 <!-- <p-dropdown [style]="{'width':'100%'}" (onChange)="onChooseChage($event, rowData)" [options]="chooseOptions" placeholder="Choose" optionLabel="name" ></p-dropdown> -->
-             <div class="action-btns">
-              <button *ngIf="rowData.hasUserAccount" pButton type="button" (click)="actionEvent('', rowData)" label="Existing Agent"></button>
-              <button *ngIf="!rowData.hasUserAccount"  pButton type="button" (click)="actionEvent('create', rowData)" label="New agent" class="ui-button-success"></button>
-             </div>
+                <div class="action-btns">
+                  <button *ngIf="rowData.hasUserAccount" pButton type="button" (click)="actionEvent('', rowData)" label="Existing Agent"></button>
+                  <button *ngIf="!rowData.hasUserAccount" pButton type="button" (click)="actionEvent('create', rowData)" label="New agent"
+                    class="ui-button-success"></button>
+                </div>
               </ng-template>
-            <ng-template [ngIf]="!last">
-              {{rowData[col.field]}}
-            </ng-template>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+              <ng-template [ngIf]="!last">
+                {{rowData[col.field]}}
+              </ng-template>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
 
+    </div>
   </div>
-</div>

@@ -1,0 +1,16 @@
+.wrapper {
+    padding: 10px 40px;
+}
+.form-group {
+    .form-control {
+        width: 350px;
+    }
+}
+.btn-holder {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    .ui-button-success {
+        padding: 5px 30px;
+    }
+}

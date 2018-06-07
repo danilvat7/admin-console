@@ -10,9 +10,10 @@
   </ng-template>
   <ng-template pTemplate="body" let-item>
     <tr>
-      <td>{{item.agent}}</td>
-      <td>{{item.phone}}</td>
-      <td>{{item.email}}</td>
+       
+      <td>{{item.buyersAgent && item.buyersAgent.firstName + '' + item.buyersAgent.lastName || 'N/A'}}</td>
+      <td>{{item.buyersAgent && item.buyersAgent.phone || 'N/A'}}</td>
+      <td>{{item.buyersAgent && item.buyersAgent.email || 'N/A'}}</td>
       <td>{{item.date + ' ' + item.time}}</td>
       <td>{{item.status}}</td>
     </tr>

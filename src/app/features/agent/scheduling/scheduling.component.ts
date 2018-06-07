@@ -25,7 +25,7 @@ export class SchedulingComponent implements OnInit, AfterViewInit, OnDestroy {
     { label: 'MLS ID', value: 'mlsListingId' },
     { label: 'Full address', value: 'address' }
   ];
-  selectedSearchType: string;
+  selectedSearchType = 'address';
   queryString: string;
 
   constructor(private agentService: AgentService) {}

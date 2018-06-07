@@ -8,13 +8,12 @@ import { IAgent } from '../../../core/models/agent.model';
   styleUrls: ['./showing.component.css']
 })
 export class ShowingComponent implements OnInit {
+  loading = true;
   agentId: string | number;
   // todo create model
   showingsList: any;
   subscription: Subscription;
-  constructor(
-    private agentService: AgentService,
-  ) { }
+  constructor(private agentService: AgentService) {}
 
   ngOnInit() {
     this.subscription = this.agentService
@@ -27,9 +26,9 @@ export class ShowingComponent implements OnInit {
             .subscribe(response => {
               const { future = [], today = [], past = [] } = response;
               this.showingsList = [...future, ...today, ...past];
-            });
+              this.loading = false;
+            }, error => (this.loading = false));
         }
       });
   }
-
 }

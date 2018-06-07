@@ -2,11 +2,11 @@
   <div class="filter-sidebar">
       <div class="search-holder">
         <div class="form-group">
-            <p-dropdown placeholder="Select the field to filter" [options]="searchType" [(ngModel)]="selectedSearchType"></p-dropdown>
+            <p-dropdown placeholder="Select the field to filter" class="form-control" [options]="searchType" [(ngModel)]="selectedSearchType"></p-dropdown>
 
         </div>
         <div class="form-group">
-            <input placeholder="Search..." (keyup)=filter() [disabled]="!selectedSearchType" [(ngModel)]="queryString" pInputText type="text">
+            <input class="form-control" placeholder="Search..." (keyup)=filter() [disabled]="!selectedSearchType" [(ngModel)]="queryString" pInputText type="text">
 
           </div>
          

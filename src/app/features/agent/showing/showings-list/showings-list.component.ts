@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./showings-list.component.scss']
 })
 export class ShowingsListComponent implements OnInit {
+
  @Input() data: any;
 
  currentSellObject: any;

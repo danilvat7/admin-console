@@ -26,7 +26,7 @@ export class SelectMlsComponent implements OnInit {
     // TODO ничего там не менять
     this.mlss = [
       {
-        label: 'MLS',
+        label: 'STAGING',
         value: {
           id: 'STAGING',
           path: 'http://stagingmls.primeshowing.com/'

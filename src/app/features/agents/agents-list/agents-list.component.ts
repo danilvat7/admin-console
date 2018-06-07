@@ -11,16 +11,9 @@ import { AgentsService } from '../agents.service';
   styleUrls: ['./agents-list.component.scss']
 })
 export class AgentsListComponent implements OnInit, OnDestroy {
+  loading = true;
   agents: any;
-  // choosenAgent: any;
-  // agentActions: MenuItem[];
-  // currentId: string;
   cols: any[];
-
-  chooseOptions = [
-    { name: 'New agent', value: 'create' },
-    { name: 'Existing Agent', value: 'existing' }
-  ];
 
   constructor(
     private agentsService: AgentsService,
@@ -43,7 +36,8 @@ export class AgentsListComponent implements OnInit, OnDestroy {
 
     this.agentsService.getAgentsListByMLS({mlsId}).subscribe(data => {
       this.agents = data;
-    });
+      this.loading = false;
+    }, error => this.loading = false);
   }
 
   ngOnDestroy() {

@@ -3,29 +3,20 @@
     <div class="row">
       <div>
         <h1>Agent's Details</h1>
-        <form [formGroup]="form">
-          <div class="form-group">
-            <input pInputText readonly type="text" formControlName="mlsId" placeholder="MLS name" name="mlsName" class="form-control">
-          </div>
-          <div class="form-group">
-            <input pInputText readonly type="text" formControlName="firstName" placeholder="Agent's First Name" name="fName" class="form-control">
-          </div>
-          <div class="form-group">
-            <input pInputText readonly type="text" formControlName="lastName" placeholder="Agent's Last Name" name="lName" class="form-control">
-          </div>
-          <div class="form-group">
-            <input pInputText readonly type="number" formControlName="phone" placeholder="Phone Number" name="phone" class="form-control">
-          </div>
-          <div class="form-group">
-            <input pInputText readonly type="email" formControlName="email" placeholder="Email" name="email" class="form-control">
-          </div>
 
-        </form>
+        <div class="name">{{agentData.firstName}} {{agentData.lastName}} -
+          <span>{{agentData.mlsId}}</span>
+        </div>
+        <div class="contacts">
+          <p *ngIf="agentData.phone">Phone: {{agentData.phone}}</p>
+          <p>Email: {{agentData.email}}</p>
+        </div>
+
       </div>
     </div>
     <p-tabMenu [model]="items"></p-tabMenu>
     <div class="content-holder">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
 
     </div>
   </div>

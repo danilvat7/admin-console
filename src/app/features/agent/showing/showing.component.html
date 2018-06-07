@@ -1,1 +1,4 @@
-<psh-showings-list [data]="showingsList"></psh-showings-list>
+<div class="preloader-wrapper">
+    <app-preloader [loading]="loading" [bg]="'none'" [position]="'absolute'"></app-preloader>
+    <psh-showings-list [data]="showingsList"></psh-showings-list>
+</div>

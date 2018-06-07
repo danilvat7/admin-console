@@ -12,6 +12,7 @@ import { IListingObject } from '../../../core/models/listing-object';
   styleUrls: ['./listing.component.scss']
 })
 export class ListingComponent implements OnInit, OnDestroy {
+  loading = true;
   agentId: string | number;
   sellObjectsList: IListingObject[] = [];
   buyersList: Show[];
@@ -19,9 +20,7 @@ export class ListingComponent implements OnInit, OnDestroy {
   currentSellObject: IListingObject;
   showModal = false;
 
-  constructor(
-    private agentService: AgentService,
-  ) {}
+  constructor(private agentService: AgentService) {}
 
   ngOnInit() {
     this.subscription = this.agentService
@@ -39,38 +38,34 @@ export class ListingComponent implements OnInit, OnDestroy {
   }
 
   getAgentListing(params?) {
-    this.agentService
-    .getAgentListing(params)
-    .subscribe(response => {
+    this.agentService.getAgentListing(params).subscribe(response => {
       this.sellObjectsList = response;
-    });
+      this.loading = false;
+    }, error => (this.loading = false));
   }
-  getBuyersList(mlsId, mlsListingId) {
-    this.agentService
-      .getShowingsBySellObj({ mlsId, mlsListingId })
-      .subscribe(response => {
-        const { future = [], today = [], past = [] } = response;
-        this.buyersList = [...future, ...today, ...past];
-      });
-  }
+
 
   onSellerSelect(event: IListingObject) {
     const { mlsId, mlsListingId } = event;
-    this.getBuyersList(mlsId, mlsListingId);
+    
   }
 
   sellerEditor(event: IListingObject) {
+
     this.currentSellObject = event;
     this.showModal = true;
   }
 
   saveSellerInfo(event: FormGroup) {
-    this.agentService.saveSeller(event.value).subscribe(response => {
-      this.showModal = false;
-      this.getAgentListing({ id: this.agentId });
-    }, error => {
-      console.log(error);
-    });
+    this.agentService.saveSeller(event.value).subscribe(
+      response => {
+        this.showModal = false;
+        this.getAgentListing({ id: this.agentId });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   cancel() {

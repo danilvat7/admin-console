@@ -40,7 +40,7 @@
   </ng-template>
 </p-table>
 
-<p-dialog [width]="460" [modal]="true" header="Edit Buyer" [(visible)]="showModal" [closable]="false">
+<p-dialog [width]="550" [modal]="true" header="Edit Buyer" [(visible)]="showModal" [closable]="false">
   <psh-edit-buyer-form (submit)="saveBuyerInfo($event)" (cancel)="cancel()" [currentSellObject]="currentSellObject"></psh-edit-buyer-form>
 
 </p-dialog>

@@ -8,14 +8,16 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputTextModule } from 'primeng/inputtext';
-import {CheckboxModule} from 'primeng/checkbox';
-import {DialogModule} from 'primeng/dialog';
-import {RadioButtonModule} from 'primeng/radiobutton';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { SelectMlsComponent } from './components/select-mls/select-mls.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 @NgModule({
-  declarations: [SelectMlsComponent],
-  imports: [FormsModule, DropdownModule],
+  declarations: [SelectMlsComponent, PreloaderComponent],
+  imports: [FormsModule, DropdownModule, ProgressSpinnerModule, CommonModule],
   exports: [
     CommonModule,
     MenubarModule,
@@ -27,7 +29,9 @@ import { SelectMlsComponent } from './components/select-mls/select-mls.component
     InputTextModule,
     CheckboxModule,
     DialogModule,
-    RadioButtonModule
+    RadioButtonModule,
+    ProgressSpinnerModule,
+    PreloaderComponent
   ]
 })
 export class SharedModule {}
