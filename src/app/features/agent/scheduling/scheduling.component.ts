@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AgentService } from '../agent.service';
+import { IAgent } from '../../../core/models/agent.model';
 // import './../../../../assets/mls-app';
 
 @Component({
@@ -18,9 +19,10 @@ import { AgentService } from '../agent.service';
 })
 export class SchedulingComponent implements OnInit, AfterViewInit, OnDestroy {
   listig: IListingObject[];
+  agentData: IAgent;
   filteredList: IListingObject[];
-  subscription: Subscription;
-
+  subscriptionToListing: Subscription;
+  subscriptionToAgent: Subscription;
   searchType = [
     { label: 'MLS ID', value: 'mlsListingId' },
     { label: 'Full address', value: 'address' }
@@ -31,7 +33,14 @@ export class SchedulingComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private agentService: AgentService) {}
 
   ngOnInit() {
-    this.subscription = this.agentService
+    this.subscriptionToAgent = this.agentService
+      .select<IAgent>('agentData')
+      .subscribe(data => {
+        if (data) {
+          this.agentData = data;
+        }
+      });
+    this.subscriptionToListing = this.agentService
       .select<IListingObject[]>('fullListing')
       .subscribe(data => {
         if (data) {
@@ -46,30 +55,34 @@ export class SchedulingComponent implements OnInit, AfterViewInit, OnDestroy {
       client: '3b6d76fd',
       mls: 'STAGING',
       listing: '',
-      agent: '2672354649',
+      agent: this.agentData.mlsAgentId,
       host: 'http://stagingmls.primeshowing.com'
     });
   }
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscriptionToListing.unsubscribe();
+    this.subscriptionToAgent.unsubscribe();
+  }
   filter() {
     if (this.queryString !== '') {
-      this.filteredList = this.listig.filter(
-        function(item) {
-          return (
-            item[this.selectedSearchType]
-              .toLowerCase()
-              .indexOf(this.queryString.toLowerCase()) > -1
-          );
-        }.bind(this)
-      );
+      this.filteredList = this.listig.filter(item => {
+        return (
+          item[this.selectedSearchType]
+            .toLowerCase()
+            .indexOf(this.queryString.toLowerCase()) > -1
+        );
+      });
     } else {
       this.filteredList = [];
     }
   }
 
-  onSelectSeller(event: IListingObject){
-    console.log(document.getElementById('primeshowinglinklisting_details_container_multiple_showings'))
-    document.getElementById('primeshowinglinklisting_details_container_multiple_showings').classList.remove('disabled');
+  onSelectSeller(event: IListingObject) {
+    document
+      .getElementById(
+        'primeshowinglinklisting_details_container_multiple_showings'
+      )
+      .classList.remove('disabled');
     window['PS'].model.listing_details_container.listing = [event.mlsListingId];
   }
 }

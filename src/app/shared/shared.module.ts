@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,6 +12,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { SelectMlsComponent } from './components/select-mls/select-mls.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
@@ -31,7 +33,17 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
     DialogModule,
     RadioButtonModule,
     ProgressSpinnerModule,
+    ConfirmDialogModule,
     PreloaderComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        ConfirmationService,
+      ]
+    };
+  }
+}

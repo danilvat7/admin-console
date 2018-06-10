@@ -4,14 +4,11 @@
       <div>
         <h1>Agent's Details</h1>
 
-        <div class="name">{{agentData.firstName}} {{agentData.lastName}} -
-          <span>{{agentData.mlsId}}</span>
-        </div>
-        <div class="contacts">
-          <p *ngIf="agentData.phone">Phone: {{agentData.phone}}</p>
-          <p>Email: {{agentData.email}}</p>
-        </div>
+        <div class="name">
+          <p>{{agentData.firstName}} {{agentData.lastName}} - {{agentData.mlsId}},
+            <span *ngIf="agentData.phone">Phone: {{agentData.phone}}, </span> Email: {{agentData.email}}</p>
 
+        </div>
       </div>
     </div>
     <p-tabMenu [model]="items"></p-tabMenu>

@@ -76,16 +76,16 @@ export class EditSellerFormComponent
         ],
         ddSeller: [seller.id, Validators.required],
         client: this.fb.group({
-          firstName: [seller.firstName, [Validators.required]],
-          lastName: [seller.lastName, Validators.required],
-          phone: [seller.phone, Validators.required],
-          email: [seller.email, [Validators.required, Validators.email]],
-          notificationType: [seller.notificationType, Validators.required]
+          firstName: [seller.firstName || '', [Validators.required]],
+          lastName: [seller.lastName || '', Validators.required],
+          phone: [seller.phone || '', Validators.required],
+          email: [seller.email, [Validators.required || '', Validators.email]],
+          notificationType: [seller.notificationType || [], Validators.required]
         })
       });
-      if (!this.currentSellObject.sellerClient) {
-        this.form.get('ddSeller').disable();
-      }
+      // if (!this.currentSellObject.sellerClient) {
+      //   this.form.get('ddSeller').disable();
+      // }
       this.form.get('seller').valueChanges.subscribe(value => {
         if (value === 'fromList') {
           this.form.get('ddSeller').enable();
@@ -123,13 +123,15 @@ export class EditSellerFormComponent
       this.form.value.client = {
         ...this.selectedSeller,
         ...this.form.value.client
-        //  notificationType: this.form.value.client.notificationType,
+
       };
+
+      this.form.value.client.notificationType = this.form.value.client.notificationType.filter(
+        item => item !== 'NA'
+      );
     }
 
-    this.form.value.client.notificationType = this.form.value.client.notificationType.filter(
-      item => item !== 'NA'
-    );
+
     this.submit.emit(this.form);
   }
 

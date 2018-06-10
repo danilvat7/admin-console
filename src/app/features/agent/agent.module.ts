@@ -36,7 +36,7 @@ import { FullListingComponent } from './scheduling/full-listing/full-listing.com
     FormsModule,
     ReactiveFormsModule,
     AgentRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     TabMenuModule
   ]
 })

@@ -17,6 +17,6 @@ export class FullListingComponent implements OnInit {
   }
 
   onSelectSeller() {
-    this.selectSeller.emit(this.selectedSeller)
+    this.selectSeller.emit(this.selectedSeller);
   }
 }

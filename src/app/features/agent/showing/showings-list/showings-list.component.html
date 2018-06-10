@@ -1,18 +1,62 @@
-<p-table [value]="data">
+<p-table #dt [value]="filteredList">
   <ng-template pTemplate="header">
     <tr>
-      <th class="sm-col">
+      <th class="sm-col" [pSortableColumn]="'id'">
         MLS Listing #
+        <p-sortIcon [field]="'id'"></p-sortIcon>
       </th>
-      <th>Address</th>
-      <th class="sm-col">Buyer's Name</th>
-      <th class="sm-col">Buyer's Phone #</th>
-      <th>Buyer's Email</th>
-      <th class="sm-col">Showing Date/Time</th>
-      <th class="sm-col">Showing Instructions</th>
-      <th class="sm-col">Status</th>
-      <th class="sm-col">Notification Method</th>
-      <th>Action</th>
+      <th [pSortableColumn]="'address'">Address
+        <p-sortIcon [field]="'address'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'buyerName'">Buyer's Name
+        <p-sortIcon [field]="'buyerName'"></p-sortIcon>
+      </th>
+      <th class="sm-col" [pSortableColumn]="'buyerPhone'">Buyer's Phone #
+        <p-sortIcon [field]="'buyerPhone'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'buyerEmail'">Buyer's Email
+        <p-sortIcon [field]="'buyerEmail'"></p-sortIcon>
+      </th>
+      <th class="sm-col" [pSortableColumn]="'date'">Showing Date/Time
+        <p-sortIcon [field]="'date'"></p-sortIcon>
+      </th>
+      <th class="sm-col" [pSortableColumn]="'showingInstructions'">Showing Instructions
+        <p-sortIcon [field]="'showingInstructions'"></p-sortIcon>
+      </th>
+      <th class="sm-col" [pSortableColumn]="'status'">Status
+        <p-sortIcon [field]="'status'"></p-sortIcon>
+      </th>
+      <th class="sm-col" [pSortableColumn]="'notificationType'">Notification Method
+        <p-sortIcon [field]="'notificationType'"></p-sortIcon>
+      </th>
+      <th class="sm-col">Action</th>
+    </tr>
+    <tr>
+      <th class="sm-col">
+      </th>
+      <th>
+        <div class="table-search">
+          <label for="address">
+            <i class="fa fa-search"></i>
+          </label>
+          <input pInputText #addressIn type="text" id="address" (keyup)="filterCol()">
+        </div>
+      </th>
+      <th class="sm-col">
+        <div class="table-search">
+          <label for="buyerName">
+            <i class="fa fa-search"></i>
+          </label>
+          <input pInputText #nameIn type="text" id="buyerName" (keyup)="filterCol()">
+        </div>
+      </th>
+      <th class="sm-col"></th>
+      <th></th>
+      <th class="sm-col"></th>
+      <th class="sm-col"></th>
+      <th class="sm-col"></th>
+      <th class="sm-col"></th>
+      <th class="sm-col"></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item let-columns="columns">
@@ -22,18 +66,22 @@
       </td>
       <td>{{item.listing.streetNumber + ' ' + item.listing.streetName + ' ' + item.listing.city + ' ' + item.listing.state +
         ' ' + item.listing.zipCode}}</td>
-      <td>{{item.sellerClient || 'N/A'}}</td>
-      <td>{{item.phone || 'N/A'}}</td>
-      <td>{{item.email || 'N/A'}}</td>
+      <td>{{item.buyersAgent && item.buyersAgent.firstName + ' ' + item.buyersAgent.lastName|| 'N/A'}}</td>
+      <td>{{item.buyersAgent && item.buyersAgent.phone || 'N/A'}}</td>
+      <td>{{item.buyersAgent && item.buyersAgent.email || 'N/A'}}</td>
       <td>{{item.date}} |
         <br> {{item.time}}</td>
       <td>{{item.showingInstructions || 'N/A'}}</td>
       <td>{{item.status}}</td>
-      <td>{{item.notificationType || 'N/A'}}</td>
       <td>
-        <div class="action-btns">
-          <button pButton type="button" (click)="buyerEditor(item)" label="Edit buyer"></button>
-          <button pButton type="button" (click)="cancelShow(item)" label="Cancel showing" class="ui-button-danger"></button>
+        <div class="notifications">
+          <span *ngFor="let item of item.buyersAgent && item.buyersAgent.notificationType">{{item}}</span>
+        </div>
+      </td>
+      <td>
+        <div *ngIf="item.status === 'CONFIRMED' || item.status === 'NOT_CONFIRMED'" class="action-btns">
+          <!-- <button pButton type="button" (click)="buyerEditor(item)" label="Edit buyer"></button> -->
+          <button pButton type="button" (click)="onCancelShow(item)" label="Cancel showing" class="ui-button-danger"></button>
         </div>
       </td>
     </tr>
@@ -44,3 +92,5 @@
   <psh-edit-buyer-form (submit)="saveBuyerInfo($event)" (cancel)="cancel()" [currentSellObject]="currentSellObject"></psh-edit-buyer-form>
 
 </p-dialog>
+
+<p-confirmDialog></p-confirmDialog>

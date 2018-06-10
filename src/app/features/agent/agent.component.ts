@@ -68,16 +68,5 @@ export class AgentComponent implements OnInit {
         routerLinkActiveOptions: { exact: true }
       }
     ];
-    this.buildForm();
-  }
-
-  buildForm() {
-    this.form = this.fb.group({
-      mlsId: [this.agentData.mlsId, [Validators.required]],
-      firstName: [this.agentData.firstName, [Validators.required]],
-      lastName: [this.agentData.lastName, Validators.required],
-      phone: [this.agentData.phone, Validators.required],
-      email: [this.agentData.email, [Validators.required, Validators.email]]
-    });
   }
 }

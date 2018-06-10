@@ -58,7 +58,7 @@ export class AgentService {
   }
 
   getAgentShowings(params?) {
-    return this.http.get<Show[]>(`showings/agent`, params);
+    return this.http.get<Show[]>(`showings/all/agent`, params);
   }
 
   getPrtners(params?) {
@@ -69,4 +69,11 @@ export class AgentService {
     return this.http.post<any>('listing/setup', data);
   }
 
+  forgotpassword(data, params?, api?) {
+    return this.http.post<any>('user/forgotpassword', data, params, api);
+  }
+
+  cancelShowing(data, params?) {
+    return this.http.post<any>('showings/cancel', data, params);
+  }
 }

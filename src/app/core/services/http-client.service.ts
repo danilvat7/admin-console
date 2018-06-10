@@ -4,11 +4,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
+import { AppSettings } from '../settings/app.settings';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
-  api = 'http://stagingmls.primeshowing.com';
+  apiUrl = AppSettings.host.apiUrl;
+  apiUrlMob = AppSettings.host.apiUrlMob;
   httpOptions = {};
   constructor(private http: HttpClient) {}
 
@@ -30,25 +32,31 @@ export class HttpClientService {
   }
 
   // GET
-  get<T>(url, paramsObj?): Observable<any> {
+  get<T>(url, paramsObj?, api?): Observable<any> {
     this.setHttpEscort(paramsObj);
-    return this.http
-      .get<any>(`${this.api}/${url}`, this.httpOptions)
-      .pipe(map(this.handleResponse), catchError(this.handlerError));
+    const apiUrl = api === 'mobile' ? this.apiUrlMob : this.apiUrl;
+    return this.http.get<any>(`${apiUrl}/${url}`, this.httpOptions).pipe(
+      map(this.handleResponse),
+      catchError(this.handlerError)
+    );
   }
 
-   // POST
-   post<T>(url, data, paramsObj?): Observable<any> {
+  // POST
+  post<T>(url, data, paramsObj?, api?): Observable<any> {
     this.setHttpEscort(paramsObj);
+    const apiUrl = api === 'mobile' ? this.apiUrlMob : this.apiUrl;
     return this.http
-      .post<any>(`${this.api}/${url}`, data, this.httpOptions)
-      .pipe(map(this.handleResponse), catchError(this.handlerError));
+      .post<any>(`${apiUrl}/${url}`, data, this.httpOptions)
+      .pipe(
+        map(this.handleResponse),
+        catchError(this.handlerError)
+      );
   }
 
   handleResponse(response): Observable<any> {
-    return response.data;
+    return response && response['data'];
   }
   handlerError(error: Error): Observable<any> {
-    throw of(error || 'Server error');
+    throw(error || 'Server error');
   }
 }

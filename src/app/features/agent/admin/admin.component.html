@@ -16,19 +16,6 @@
     </div>
 
     <div class="control-col">
-      <div class="form-group">
-        <input pInputText type="text" formControlName="username" placeholder="Username" name="username" class="form-control">
-      </div>
-      <div class="form-group">
-        <input pInputText type="password" formControlName="password" placeholder="Password" name="password" class="form-control">
-      </div>
-      <div class="form-group">
-        <input pInputText type="password" formControlName="confirmPassword" placeholder="Re­enter Password
-              " name="password" class="form-control">
-      </div>
-    </div>
-
-    <div class="control-col">
       <h3>Notification Method</h3>
       <div class="form-group">
         <!-- <p-checkbox [op] [formControl]="form.controls['notificationType']"></p-checkbox> -->
@@ -38,10 +25,19 @@
       </div>
     </div>
 
+    <div class="control-col">
+      <div class="form-group">
+        <input pInputText type="text" formControlName="username" placeholder="Username" name="username" class="form-control" readonly>
+      </div>
+
+    </div>
+
     <div class="btns-holder">
       <button disabled="!form.valid" pButton class="ui-button-secondary" type="submit" (click)="onSubmit()" label="Save"></button>
-      <button pButton class="ui-button-secondary" type="button" label="Email log in credentials"></button>
-      <button pButton class="ui-button-secondary" type="button" label="Cancel Subscription"></button>
+      <button pButton class="ui-button-secondary" type="button" (click)="forgotPassword()" label="Mail credentials"></button>
+      <button pButton class="ui-button-secondary" type="button" (click)="confirmDeleting()" label="Delete Agent"></button>
     </div>
   </form>
 </div>
+
+<p-confirmDialog></p-confirmDialog>

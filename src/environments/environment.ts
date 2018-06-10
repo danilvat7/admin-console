@@ -5,6 +5,8 @@
 
 export const environment = {
   production: false,
-  mlsHost: 'stagingmls.primeshowing.com',
-  basePath: '/',
+  mlsHost: 'http://stagingmls.primeshowing.com',
+  mlsMobHost: 'http://stagingmob.primeshowing.com',
+
 };
+

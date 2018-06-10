@@ -5,6 +5,7 @@ import { IAgent } from '../../../core/models/agent.model';
 import { Show } from '../../../core/models/show.model';
 import { FormGroup } from '@angular/forms';
 import { IListingObject } from '../../../core/models/listing-object';
+import { ToasterService } from '../../../core/services/toaster.service';
 
 @Component({
   selector: 'psh-listing',
@@ -20,7 +21,10 @@ export class ListingComponent implements OnInit, OnDestroy {
   currentSellObject: IListingObject;
   showModal = false;
 
-  constructor(private agentService: AgentService) {}
+  constructor(
+    private agentService: AgentService,
+    private toaster: ToasterService
+  ) {}
 
   ngOnInit() {
     this.subscription = this.agentService
@@ -44,26 +48,24 @@ export class ListingComponent implements OnInit, OnDestroy {
     }, error => (this.loading = false));
   }
 
-
   onSellerSelect(event: IListingObject) {
     const { mlsId, mlsListingId } = event;
-    
   }
 
   sellerEditor(event: IListingObject) {
-
     this.currentSellObject = event;
     this.showModal = true;
   }
 
   saveSellerInfo(event: FormGroup) {
     this.agentService.saveSeller(event.value).subscribe(
-      response => {
+      _ => {
         this.showModal = false;
+        this.toaster.showMessage();
         this.getAgentListing({ id: this.agentId });
       },
       error => {
-        console.log(error);
+        this.toaster.showMessage(error);
       }
     );
   }

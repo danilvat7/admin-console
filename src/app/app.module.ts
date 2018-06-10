@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataStorageService} from './core/services/data-storage.service';
 import {CoreModule} from './core/core.module';
 import {HttpClientModule} from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     DataStorageService,

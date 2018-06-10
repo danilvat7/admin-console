@@ -15,7 +15,7 @@
 
     <div class="seller-select">
       <p-radioButton name="seller" value="no seller" label="No seller" formControlName="seller"></p-radioButton>
-      <p-radioButton *ngIf="!currentSellObject.sellerClient" name="seller" value="seller" label="New seller" formControlName="seller"></p-radioButton>
+      <p-radioButton name="seller" value="seller" label="New seller" formControlName="seller"></p-radioButton>
       <div class="choose">
         <p-radioButton name="seller" value="fromList" formControlName="seller"></p-radioButton>
         <p-dropdown [options]="ddSellerValue" #ddSellers formControlName="ddSeller" (onChange)="onSellerChange(ddSellers.value)" placeholder="Select seller"></p-dropdown>

@@ -1,14 +1,14 @@
 :host /deep/ .content-holder {
   padding: 10px;
-
   .ui-table {
-    font-size: 13px;
-
-    // .ui-table-tbody {
+    font-size: 13px; // .ui-table-tbody {
     //   font-size: 1px;
     // }
     .ui-table-tbody>tr>td {
       word-wrap: break-word;
+    }
+    .sm-col {
+      width: 7%;
     }
   }
   .empty-list {
@@ -16,18 +16,11 @@
     font-size: 20px;
     padding: 10px;
   }
-
 }
 
-.name {
+.profile {
   font-size: 30px;
   margin-bottom: 15px;
-  span {
-    font-size: 24px;
-    font-weight: 600;
-  }
-}
-.contacts {
   p {
     font-size: 18px;
     font-weight: 600;
