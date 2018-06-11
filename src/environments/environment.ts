@@ -5,8 +5,6 @@
 
 export const environment = {
   production: false,
-  mlsHost: 'http://stagingmls.primeshowing.com',
-  mlsMobHost: 'http://stagingmob.primeshowing.com',
-
+  envType: 'local'
 };
 

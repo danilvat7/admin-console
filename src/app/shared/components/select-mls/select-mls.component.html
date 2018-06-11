@@ -1,5 +1,5 @@
 <div class="ui-g-12">
-  <p-dropdown [options]="mlss" styleClass="mls-dropdown" placeholder="Select MLS" [autoWidth]="false" [(ngModel)]="selectedMLS"
+  <p-dropdown optionLabel="id" [options]="mlsUrls" styleClass="mls-dropdown" placeholder="Select MLS" [autoWidth]="false" [(ngModel)]="selectedMLS"
     (onChange)="onMLSselect()"></p-dropdown>
-  <!--<p>Selected MLS: {{selectedMLS ? selectedMLS.path : 'none'}}</p>-->
+
 </div>

@@ -8,11 +8,17 @@ import { AppSettings } from '../settings/app.settings';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpClientService {
-  apiUrl = AppSettings.host.apiUrl;
+  apiUrl: string;
   apiUrlMob = AppSettings.host.apiUrlMob;
   httpOptions = {};
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem('currentMls')) {
+      this.apiUrl = JSON.parse(localStorage.getItem('currentMls'))['url'];
+      console.log(this.apiUrlMob)
+    }
+  }
 
   setHttpEscort(paramObj?: any) {
     this.httpOptions = {

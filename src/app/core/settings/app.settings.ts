@@ -1,10 +1,10 @@
 import { environment } from './../../../environments/environment';
-
+import { hostUrls } from './host-urls';
 export class AppSettings {
   public static get host(): any {
     return {
-      apiUrl: environment.mlsHost,
-      apiUrlMob: environment.mlsMobHost
+      apiUrls: hostUrls[environment['envType']].mlsHosts,
+      apiUrlMob: hostUrls[environment['envType']].mlsMobHost
     };
   }
 }

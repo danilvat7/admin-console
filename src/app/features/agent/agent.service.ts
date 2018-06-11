@@ -73,7 +73,7 @@ export class AgentService {
     return this.http.post<any>('user/forgotpassword', data, params, api);
   }
 
-  cancelShowing(data, params?) {
-    return this.http.post<any>('showings/cancel', data, params);
+  cancelShowing(data, params?, api?) {
+    return this.http.post<any>('showings/cancel', data, params, api);
   }
 }

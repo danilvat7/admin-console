@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './core/home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AgentResolver } from './shared/resolvers/agent-resolver';
-
+import { ApiUrlGuard } from './core/services/api-url.guard';
 const appRoutes: Routes = [
   {
     path: 'mls',
@@ -12,7 +12,8 @@ const appRoutes: Routes = [
     children: [
       {
         path: ':mlsId/agents',
-        loadChildren: './features/agents/agents.module#AgentsModule'
+        loadChildren: './features/agents/agents.module#AgentsModule',
+        canActivate: [ApiUrlGuard]
 
       }
     ]
@@ -20,12 +21,16 @@ const appRoutes: Routes = [
   {
     path: 'mls/:mlsId/agents/:id',
     loadChildren: './features/agent/agent.module#AgentModule',
-    resolve: { agentData: AgentResolver }
+    resolve: { agentData: AgentResolver },
+    canActivate: [ApiUrlGuard]
+
   },
   {
     path: 'mls/:mlsId/agents/:id/create',
     loadChildren: './features/new-agent/new-agent.module#NewAgentModule',
-    resolve: { agentData: AgentResolver }
+    resolve: { agentData: AgentResolver },
+    canActivate: [ApiUrlGuard]
+
   },
   { path: '**', redirectTo: '/mls' }
 ];
