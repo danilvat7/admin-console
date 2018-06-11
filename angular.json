@@ -51,6 +51,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]              
             }
           }
         },
@@ -62,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "admin-console:build:production"
+            },
+            "staging": {
+              "browserTarget": "admin-console:build:staging"
             }
           }
         },

@@ -43,10 +43,9 @@
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-item let-columns="columns">
     <tr>
-      <td [attr.colspan]="10">
+      <td class="sub-table" [attr.colspan]="10">
         <div class="wrapper">
           <div class="preloader-wrapper">
-            <app-preloader [loading]="loading" [bg]="'none'" [position]="'absolute'"></app-preloader>
             <div class="buyers-holder" *ngIf="buyersData[item.mlsListingId] && buyersData[item.mlsListingId].length">
               <psh-buyers-list [data]="buyersData[item.mlsListingId]"></psh-buyers-list>
             </div>
